@@ -1,54 +1,128 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criação de Conteúdo - Agência Gerais</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Agência Gerais - Marketing Digital & Redes Sociais</title>
+        
+        <!-- TailwindCSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                colors: {
+                  primary: '#8B5CF6',
+                  secondary: '#7C3AED',
+                  dark: '#1F2937',
+                  darker: '#111827'
+                }
+              }
+            }
+          }
+        </script>
+        
+        <!-- AOS (Animações ao rolar a página) -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+        
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+        <style>
+            .hero-section {
+                background: linear-gradient(rgba(139, 92, 246, 0.85), rgba(124, 58, 237, 0.9)), 
+                            url('assets/imagem1.png') center/cover no-repeat;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+                position: relative;
+                overflow: hidden;
+            }
     
-    <!-- TailwindCSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                padding: 0 20px;
+            }
     
-    <!-- AOS (Animações ao rolar a página) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-
-    <style>
-        .highlight {
-            color: #f59e0b; /* Amarelo */
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
+            .wave-shape {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100px;
+                background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231F2937' fill-opacity='1' d='M0,224L48,192C96,160,192,96,288,101.3C384,107,480,181,576,218.7C672,256,768,256,864,213.3C960,171,1056,85,1152,69.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
+            }
     
-    <!-- Cabeçalho IDÊNTICO ao da página inicial -->
-<header class="fixed w-full bg-gray-800 bg-opacity-90 backdrop-blur-md shadow-md py-4 z-50 top-0 left-0">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <div class="flex items-center">
-        <!-- Ícone + Nome (EXATAMENTE igual ao original) -->
-        <img src="assets/iconagencia.png" alt="Ícone da Agência" class="w-14 h-12 rounded-full mr-3">
-        <h1 class="text-xl font-bold text-purple-600">Agência</h1>
-        <h1 class="text-xl font-bold text-white">Gerais</h1>
-      </div>
-      
-      <!-- Menu de navegação COM ÍCONES -->
-      <nav class="hidden md:flex items-center space-x-6">
-        <a href="/" class="flex items-center text-white hover:text-purple-400 transition">
-          <i class="fas fa-home mr-2"></i> Início
-        </a>
-        <a href="/pacotes" class="flex items-center text-white hover:text-purple-400 transition">
-          <i class="fas fa-box-open mr-2"></i> Pacotes
-        </a>
-        <a href="/sobre" class="flex items-center text-white hover:text-purple-400 transition">
-          <i class="fas fa-users mr-2"></i> Quem somos
-        </a>
-      </nav>
-      
-      <!-- Botão mobile (aparece só em telas pequenas) -->
-      <button class="md:hidden text-white text-xl">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </header>
+            .service-card {
+                transition: all 0.3s ease;
+                border-top: 4px solid transparent;
+            }
+    
+            .service-card:hover {
+                transform: translateY(-5px);
+                border-top-color: #8B5CF6;
+                box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+            }
+    
+            .stats-item {
+                position: relative;
+                overflow: hidden;
+            }
+    
+            .stats-item::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.2));
+                z-index: -1;
+            }
+    
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+    
+            .floating {
+                animation: float 4s ease-in-out infinite;
+            }
+        </style>
+    </head>
+    <body class="bg-darker text-gray-100">
+        
+        <!-- Cabeçalho Premium -->
+        <header class="fixed w-full bg-gray-900/90 backdrop-blur-md shadow-lg py-3 z-50 top-0 left-0">
+            <div class="container mx-auto flex justify-between items-center px-6">
+                <div class="flex items-center">
+                    <img src="assets/iconagencia.png" alt="Ícone da Agência" class="w-12 h-12 rounded-full mr-3 border-2 border-primary">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">Agência Gerais</h1>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-white hover:text-primary transition-all font-medium flex items-center">
+                        <i class="fas fa-home mr-2"></i> Início
+                    </a>
+                    <a href="/pacotes" class="text-white hover:text-primary transition-all font-medium flex items-center">
+                        <i class="fas fa-box-open mr-2"></i> Pacotes
+                    </a>
+                    <a href="/sobre" class="text-white hover:text-primary transition-all font-medium flex items-center">
+                        <i class="fas fa-users mr-2"></i> Quem somos
+                    </a>
+                    <a href="#resultados" class="px-5 py-2 bg-primary text-white rounded-full font-bold hover:bg-secondary transition-all shadow-lg hover:shadow-primary/30">
+                        Resultados
+                    </a>
+                </nav>
+                <button class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </header>
   
   <!-- Espaço para o cabeçalho fixo -->
   <div class="h-20"></div>
