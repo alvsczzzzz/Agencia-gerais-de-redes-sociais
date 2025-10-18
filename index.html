@@ -97,32 +97,36 @@
 </head>
 <body class="bg-darker text-gray-100">
     
-    <!-- Cabeçalho Premium -->
-    <header class="fixed w-full bg-gray-900/90 backdrop-blur-md shadow-lg py-3 z-50 top-0 left-0">
-        <div class="container mx-auto flex justify-between items-center px-6">
-            <div class="flex items-center">
-                <img src="assets/iconagencia.png" alt="Ícone da Agência" class="w-12 h-12 rounded-full mr-3 border-2 border-primary">
-                <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">Agência Gerais</h1>
-            </div>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="/" class="text-white hover:text-primary transition-all font-medium flex items-center">
-                    <i class="fas fa-home mr-2"></i> Início
-                </a>
-                <a href="/pacotes" class="text-white hover:text-primary transition-all font-medium flex items-center">
-                    <i class="fas fa-box-open mr-2"></i> Pacotes
-                </a>
-                <a href="/sobre" class="text-white hover:text-primary transition-all font-medium flex items-center">
-                    <i class="fas fa-users mr-2"></i> Quem somos
-                </a>
-                <a href="#resultados" class="px-5 py-2 bg-primary text-white rounded-full font-bold hover:bg-secondary transition-all shadow-lg hover:shadow-primary/30">
-                    Resultados
-                </a>
-            </nav>
-            <button class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-        </div>
-    </header>
+    <!-- Cabeçalho fixo simplificado (sem script mobile) -->
+<header class="fixed w-full bg-gray-900/90 backdrop-blur-md shadow-lg py-3 z-50 top-0 left-0">
+  <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6 gap-3 sm:gap-0">
+    
+    <!-- Logo e nome -->
+    <div class="flex items-center">
+      <img src="assets/iconagencia.png" alt="Ícone da Agência" class="w-12 h-12 rounded-full mr-3 border-2 border-primary">
+      <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
+        Agência Gerais
+      </h1>
+    </div>
+
+    <!-- Navegação sempre visível -->
+    <nav class="flex flex-wrap justify-center items-center space-x-4 sm:space-x-8">
+      <a href="/" class="text-white hover:text-primary transition-all font-medium flex items-center">
+        <i class="fas fa-home mr-2"></i> Início
+      </a>
+      <a href="/pacotes" class="text-white hover:text-primary transition-all font-medium flex items-center">
+        <i class="fas fa-box-open mr-2"></i> Pacotes
+      </a>
+      <a href="/sobre" class="text-white hover:text-primary transition-all font-medium flex items-center">
+        <i class="fas fa-users mr-2"></i> Quem somos
+      </a>
+      <a href="#resultados" class="px-5 py-2 bg-primary text-white rounded-full font-bold hover:bg-secondary transition-all shadow-lg hover:shadow-primary/30">
+        Resultados
+      </a>
+    </nav>
+
+  </div>
+</header>
 
     <!-- Seção Hero Premium -->
     <section class="hero-section">
