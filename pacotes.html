@@ -105,15 +105,6 @@
             padding: 0 20px;
         }
 
-        .wave-shape {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231F2937' fill-opacity='1' d='M0,224L48,192C96,160,192,96,288,101.3C384,107,480,181,576,218.7C672,256,768,256,864,213.3C960,171,1056,85,1152,69.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
-        }
-
         .service-card {
             transition: all 0.3s ease;
             border-top: 4px solid transparent;
@@ -140,22 +131,6 @@
             transform: translateY(-10px);
             border-top-color: #8B5CF6;
             box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
-        }
-
-        .stats-item {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stats-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.2));
-            z-index: -1;
         }
 
         .platform-card {
@@ -290,24 +265,6 @@
             animation-duration: 25s;
         }
 
-        .floating-shape:nth-child(3) {
-            width: 60px;
-            height: 60px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 4s;
-            animation-duration: 18s;
-        }
-
-        .floating-shape:nth-child(4) {
-            width: 100px;
-            height: 100px;
-            top: 30%;
-            left: 70%;
-            animation-delay: 6s;
-            animation-duration: 22s;
-        }
-
         .typewriter-text {
             overflow: hidden;
             border-right: 3px solid #8B5CF6;
@@ -345,12 +302,6 @@
             left: 70%;
             animation-duration: 12s;
             animation-direction: reverse;
-        }
-
-        .blob:nth-child(3) {
-            top: 30%;
-            left: 50%;
-            animation-duration: 18s;
         }
 
         .section-title {
@@ -570,7 +521,7 @@
             <!-- ÁREA DE SEÇÕES EXPANDÍVEIS -->
             <div id="sections-wrapper" class="max-w-6xl mx-auto">
                 <!-- ================= INSTAGRAM ================= -->
-                <section id="instagram" class="platform-section active">
+                <section id="instagram" class="platform-section">
                     <h3 class="text-3xl font-semibold mb-6 text-center section-title">
                         <i class="fab fa-instagram text-pink-500"></i> Pacotes Instagram
                     </h3>
@@ -586,7 +537,7 @@
                             <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 23,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Entrega gradual em até 7 dias</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Star%20para%20Instagram">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Star%20para%20Instagram" target="_blank">
                                 <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
                             </a>
                         </div>
@@ -598,7 +549,7 @@
                             <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 44,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Resultados em até 10 dias</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Pro%20para%20Instagram">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Pro%20para%20Instagram" target="_blank">
                                 <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
                             </a>
                         </div>
@@ -610,7 +561,7 @@
                             <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Alta performance em 15 dias</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Turbo%20para%20Instagram">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Turbo%20para%20Instagram" target="_blank">
                                 <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
                             </a>
                         </div>
@@ -624,7 +575,7 @@
                             <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 179,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 399,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Perfeito para viralizar</p>
-                            <a href="https://wa.me/5551990132339?text=Pacote%20Viral">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Viral%20para%20Instagram" target="_blank">
                                 <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
                             </a>
                         </div>
@@ -636,7 +587,7 @@
                             <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 349,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 719,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Crescimento acelerado</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Instagram">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Instagram" target="_blank">
                                 <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
                             </a>
                         </div>
@@ -648,7 +599,7 @@
                             <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 699,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.359,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Resultados profissionais</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Instagram">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Instagram" target="_blank">
                                 <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
                             </a>
                         </div>
@@ -672,7 +623,7 @@
                             <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Crescimento orgânico gradual</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Inicial%20para%20Facebook">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Inicial%20para%20Facebook" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -684,7 +635,7 @@
                             <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 64,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Aumente sua visibilidade</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Facebook">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Facebook" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -696,7 +647,7 @@
                             <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Alcance máximo em 15 dias</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Facebook">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Facebook" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -710,7 +661,7 @@
                             <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 289,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 429,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Perfeito para negócios</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Profissional%20para%20Facebook">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Profissional%20para%20Facebook" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -722,7 +673,7 @@
                             <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 579,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 819,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Autoridade no nicho</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Facebook">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Facebook" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -734,7 +685,7 @@
                             <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 1.099,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.599,90</span></p>
                             <p class="text-sm text-gray-400 mb-4">Alcance massivo</p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Facebook">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Facebook" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -757,7 +708,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
                             <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 27,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 79,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20TikTok">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20TikTok" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -768,7 +719,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Crescendo</h4>
                             <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 49,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 139,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Crescendo%20para%20TikTok">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Crescendo%20para%20TikTok" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -779,7 +730,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Interativo</h4>
                             <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
                             <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Interativo%20para%20TikTok">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Interativo%20para%20TikTok" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -802,7 +753,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
                             <p class="text-gray-300 mb-2">+1.000 views + 500 inscritos</p>
                             <p class="price-tag text-xl mb-2">R$ 69,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20YouTube">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20YouTube" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -813,7 +764,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Engajado</h4>
                             <p class="text-gray-300 mb-2">+5.000 views + 2.000 inscritos</p>
                             <p class="price-tag text-xl mb-2">R$ 139,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 359,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Engajado%20para%20YouTube">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Engajado%20para%20YouTube" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -824,7 +775,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Relevância</h4>
                             <p class="text-gray-300 mb-2">+10.000 views + 5.000 inscritos</p>
                             <p class="price-tag text-xl mb-2">R$ 249,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 649,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Relevância%20para%20YouTube">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Relevância%20para%20YouTube" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -847,7 +798,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
                             <p class="text-gray-300 mb-2">+5.000 streams + 1.000 seguidores</p>
                             <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 ml-2">R$ 119,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Spotify">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Spotify" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -858,7 +809,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Visibilidade</h4>
                             <p class="text-gray-300 mb-2">+25.000 streams + 5.000 seguidores</p>
                             <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through ml-2 text-gray-500">R$ 349,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Visibilidade%20para%20Spotify">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Visibilidade%20para%20Spotify" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -869,7 +820,7 @@
                             <h4 class="text-xl font-bold mb-2">Pacote Reconhecimento</h4>
                             <p class="text-gray-300 mb-2">+50.000 streams + 10.000 seguidores</p>
                             <p class="price-tag text-xl mb-2">R$ 199,90 <span class="line-through ml-2 text-gray-500">R$ 599,90</span></p>
-                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Reconhecimento%20para%20Spotify">
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Reconhecimento%20para%20Spotify" target="_blank">
                                 <button class="platform-button w-full">Quero esse</button>
                             </a>
                         </div>
@@ -1009,25 +960,35 @@
             activatePlatform('instagram');
         });
         
-        // Sistema de notificações (mantido do código original)
+        // Sistema de notificações com nomes brasileiros
         const notificationsDB = {
             purchases: [
-                { name: "Ana C.", package: "Pacote Turbo", platform: "Instagram", time: "2 min atrás", rating: 5 },
-                { name: "Marcos R.", package: "Pacote Elite", platform: "YouTube", time: "5 min atrás", rating: 5 },
-                { name: "Carla S.", package: "Pacote Explosão", platform: "TikTok", time: "10 min atrás", rating: 4 },
+                { name: "Ana Carolina", package: "Pacote Turbo", platform: "Instagram", time: "2 min atrás", rating: 5 },
+                { name: "Marcos Rodrigues", package: "Pacote Elite", platform: "YouTube", time: "5 min atrás", rating: 5 },
+                { name: "Carla Silva", package: "Pacote Explosão", platform: "TikTok", time: "10 min atrás", rating: 4 },
                 { name: "Digital Growth", package: "Pacote Avançado", platform: "Facebook", time: "15 min atrás", rating: 5 },
-                { name: "Agência Top", package: "Pacote Referência", platform: "Spotify", time: "20 min atrás", rating: 5 }
+                { name: "Agência Top", package: "Pacote Referência", platform: "Spotify", time: "20 min atrás", rating: 5 },
+                { name: "João Santos", package: "Pacote Star", platform: "Instagram", time: "25 min atrás", rating: 5 },
+                { name: "Maria Oliveira", package: "Pacote Pro", platform: "Instagram", time: "30 min atrás", rating: 4 },
+                { name: "Pedro Costa", package: "Pacote Viral", platform: "Instagram", time: "35 min atrás", rating: 5 },
+                { name: "Juliana Almeida", package: "Pacote Influencer", platform: "Instagram", time: "40 min atrás", rating: 5 },
+                { name: "Ricardo Souza", package: "Pacote Inicial", platform: "Facebook", time: "45 min atrás", rating: 4 }
             ],
             reviews: [
-                { name: "Lucas M.", comment: "Resultados além do esperado! Meu perfil explodiu!", rating: 5 },
-                { name: "Beatriz F.", comment: "Atendimento excelente e entrega rápida", rating: 5 },
-                { name: "Ricardo K.", comment: "Minhas streams aumentaram 300%", rating: 4 },
-                { name: "Agência Social", comment: "Melhor custo-benefício do mercado", rating: 5 }
+                { name: "Lucas Mendes", comment: "Resultados além do esperado! Meu perfil explodiu!", rating: 5 },
+                { name: "Beatriz Ferreira", comment: "Atendimento excelente e entrega rápida", rating: 5 },
+                { name: "Ricardo Klein", comment: "Minhas streams aumentaram 300%", rating: 4 },
+                { name: "Agência Social", comment: "Melhor custo-benefício do mercado", rating: 5 },
+                { name: "Fernanda Lima", comment: "Recomendo para todos os meus amigos!", rating: 5 },
+                { name: "Roberto Alves", comment: "Crescimento orgânico de verdade", rating: 4 },
+                { name: "Patrícia Rocha", comment: "Suporte incrível e resultados rápidos", rating: 5 }
             ],
             milestones: [
                 { text: "🎉 157 pacotes vendidos esta semana!" },
                 { text: "🔥 5 novos clientes VIP nesta hora" },
-                { text: "⭐ Média de 4.9/5 nas avaliações" }
+                { text: "⭐ Média de 4.9/5 nas avaliações" },
+                { text: "🚀 +1000 clientes satisfeitos" },
+                { text: "💜 Empresa 5 estrelas no Reclame Aqui" }
             ]
         };
 
