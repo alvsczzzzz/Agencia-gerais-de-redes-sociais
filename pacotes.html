@@ -85,6 +85,40 @@
             z-index: -1;
         }
 
+        .platform-card {
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            border-top-color: #8B5CF6;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .platform-button {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .platform-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -513,6 +547,159 @@
     <p class="text-gray-300 mb-2">+50.000 streams + 10.000 seguidores</p>
     <p class="price-tag text-xl mb-2">R$ 199,90 <span class="line-through ml-2 text-gray-500">R$ 599,90</span></p>
     <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Reconhecimento%20para%20Spotify">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+</div>
+
+</section>
+
+<!-- ================ TWITTER/X ================= -->
+<section id="twitter" class="hidden">
+
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fab fa-twitter text-blue-400"></i> Pacotes Twitter/X
+</h3>
+
+<p class="text-gray-400 mb-10 text-center">Aumente seu alcance no Twitter/X!</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Iniciante -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 24,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 15,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Crescimento orgânico</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Twitter">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+  <!-- Intermediário -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
+    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 40,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 25,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Engajamento real</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Twitter">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+  <!-- Avançado -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
+    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 64,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 40,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Alta performance</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Twitter">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+</div>
+
+</section>
+
+<!-- ================ TELEGRAM ================= -->
+<section id="telegram" class="hidden">
+
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fab fa-telegram text-blue-400"></i> Pacotes Telegram
+</h3>
+
+<p class="text-gray-400 mb-10 text-center">Cresça seu canal no Telegram!</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Iniciante -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+    <p class="text-gray-300 mb-2">+500 membros + 1.000 visualizações</p>
+    <p class="price-tag text-xl mb-2">R$ 32,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 20,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Crescimento gradual</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Telegram">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+  <!-- Intermediário -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
+    <p class="text-gray-300 mb-2">+1.000 membros + 2.000 visualizações</p>
+    <p class="price-tag text-xl mb-2">R$ 48,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 30,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Engajamento real</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Telegram">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+  <!-- Avançado -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
+    <p class="text-gray-300 mb-2">+2.000 membros + 4.000 visualizações</p>
+    <p class="price-tag text-xl mb-2">R$ 80,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 50,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Alta performance</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Telegram">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+</div>
+
+</section>
+
+<!-- ================ KWAI ================= -->
+<section id="kwai" class="hidden">
+
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fas fa-video text-orange-500"></i> Pacotes Kwai
+</h3>
+
+<p class="text-gray-400 mb-10 text-center">Cresça no Kwai com engajamento real!</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Iniciante -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 24,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 15,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Crescimento gradual</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Kwai">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+  <!-- Intermediário -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
+    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 40,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 25,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Engajamento real</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Kwai">
+      <button class="platform-button w-full">Quero esse</button>
+    </a>
+  </div>
+
+  <!-- Avançado -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
+    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 64,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 40,00</span></p>
+    <p class="text-sm text-gray-400 mb-4">Alta performance</p>
+    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Kwai">
       <button class="platform-button w-full">Quero esse</button>
     </a>
   </div>
