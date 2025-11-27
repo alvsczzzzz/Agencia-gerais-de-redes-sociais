@@ -374,6 +374,7 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .platform-selector::before {
@@ -401,6 +402,7 @@
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
             border: 2px solid rgba(139, 92, 246, 0.5);
+            background: rgba(139, 92, 246, 0.1);
         }
 
         .platform-selector.active::before {
@@ -437,6 +439,20 @@
         @keyframes fade-out {
             from { opacity: 1; transform: translateX(0); }
             to { opacity: 0; transform: translateX(100%); }
+        }
+
+        /* Estilo para seções ativas */
+        .platform-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .platform-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -509,7 +525,7 @@
                 <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition">
                     <i class="fab fa-facebook-f text-xl"></i>
                 </a>
-                <a href="#" class="social-icon w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 transition">
+                <a href="https://www.tiktok.com/@agenciagerais" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 transition">
                     <i class="fab fa-tiktok text-xl"></i>
                 </a>
                 <a href="https://wa.me/5551990132339" target="_blank" class="social-icon w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition">
@@ -525,27 +541,27 @@
 
             <!-- SELECTOR DE PLATAFORMAS (CARDS CLICÁVEIS) -->
             <div class="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-5xl mx-auto mb-12">
-                <div onclick="toggleSection('instagram')" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center" id="instagram-selector">
+                <div data-platform="instagram" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center">
                     <i class="fab fa-instagram text-4xl text-pink-500 mb-2"></i>
                     <h3 class="font-semibold text-lg">Instagram</h3>
                 </div>
 
-                <div onclick="toggleSection('facebook')" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center" id="facebook-selector">
+                <div data-platform="facebook" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center">
                     <i class="fab fa-facebook text-4xl text-blue-500 mb-2"></i>
                     <h3 class="font-semibold text-lg">Facebook</h3>
                 </div>
 
-                <div onclick="toggleSection('tiktok')" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center" id="tiktok-selector">
+                <div data-platform="tiktok" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center">
                     <i class="fab fa-tiktok text-4xl mb-2"></i>
                     <h3 class="font-semibold text-lg">TikTok</h3>
                 </div>
 
-                <div onclick="toggleSection('youtube')" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center" id="youtube-selector">
+                <div data-platform="youtube" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center">
                     <i class="fab fa-youtube text-4xl text-red-500 mb-2"></i>
                     <h3 class="font-semibold text-lg">YouTube</h3>
                 </div>
 
-                <div onclick="toggleSection('spotify')" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center" id="spotify-selector">
+                <div data-platform="spotify" class="platform-selector cursor-pointer p-6 bg-gray-800 rounded-xl shadow text-center">
                     <i class="fab fa-spotify text-4xl text-green-500 mb-2"></i>
                     <h3 class="font-semibold text-lg">Spotify</h3>
                 </div>
@@ -554,7 +570,7 @@
             <!-- ÁREA DE SEÇÕES EXPANDÍVEIS -->
             <div id="sections-wrapper" class="max-w-6xl mx-auto">
                 <!-- ================= INSTAGRAM ================= -->
-                <section id="instagram" class="transition-all duration-700 ease-in-out hidden">
+                <section id="instagram" class="platform-section active">
                     <h3 class="text-3xl font-semibold mb-6 text-center section-title">
                         <i class="fab fa-instagram text-pink-500"></i> Pacotes Instagram
                     </h3>
@@ -639,27 +655,225 @@
                     </div>
                 </section>
 
-                <!-- Outras seções (Facebook, TikTok, YouTube, Spotify) permanecem com a mesma estrutura, apenas com animações aplicadas -->
-                <!-- Para economizar espaço, manteremos apenas a estrutura do Instagram como exemplo -->
-                
                 <!-- ================= FACEBOOK ================= -->
-                <section id="facebook" class="hidden transition-all duration-700 ease-in-out">
-                    <!-- Conteúdo similar ao Instagram, adaptado para Facebook -->
+                <section id="facebook" class="platform-section">
+                    <h3 class="text-3xl font-semibold mb-6 text-center section-title">
+                        <i class="fab fa-facebook text-blue-500"></i> Pacotes Facebook
+                    </h3>
+                    <p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
+                        Aumente sua presença no Facebook com engajamento real!
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Inicial -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">25%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Inicial</h4>
+                            <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
+                            <p class="text-sm text-gray-400 mb-4">Crescimento orgânico gradual</p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Inicial%20para%20Facebook">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Intermediário -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
+                            <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 64,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
+                            <p class="text-sm text-gray-400 mb-4">Aumente sua visibilidade</p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Facebook">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Avançado -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">35%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
+                            <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
+                            <p class="text-sm text-gray-400 mb-4">Alcance máximo em 15 dias</p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Facebook">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                        <!-- Profissional -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Profissional</h4>
+                            <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 289,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 429,90</span></p>
+                            <p class="text-sm text-gray-400 mb-4">Perfeito para negócios</p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Profissional%20para%20Facebook">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Influencer -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
+                            <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 579,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 819,90</span></p>
+                            <p class="text-sm text-gray-400 mb-4">Autoridade no nicho</p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Facebook">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Elite -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
+                            <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 1.099,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.599,90</span></p>
+                            <p class="text-sm text-gray-400 mb-4">Alcance massivo</p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Facebook">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- ================= TIKTOK ================= -->
-                <section id="tiktok" class="hidden transition-all duration-700 ease-in-out">
-                    <!-- Conteúdo similar ao Instagram, adaptado para TikTok -->
+                <section id="tiktok" class="platform-section">
+                    <h3 class="text-3xl font-semibold mb-6 text-center section-title">
+                        <i class="fab fa-tiktok"></i> Pacotes TikTok
+                    </h3>
+                    <p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
+                        Viralize seus vídeos e cresça rápido!
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Iniciante -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">25%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+                            <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 27,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 79,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20TikTok">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Crescendo -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Crescendo</h4>
+                            <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 49,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 139,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Crescendo%20para%20TikTok">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Interativo -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">35%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Interativo</h4>
+                            <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+                            <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Interativo%20para%20TikTok">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- ================= YOUTUBE ================= -->
-                <section id="youtube" class="hidden transition-all duration-700 ease-in-out">
-                    <!-- Conteúdo similar ao Instagram, adaptado para YouTube -->
+                <section id="youtube" class="platform-section">
+                    <h3 class="text-3xl font-semibold mb-6 text-center section-title">
+                        <i class="fab fa-youtube text-red-500"></i> Pacotes YouTube
+                    </h3>
+                    <p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
+                        Fortaleça seu canal com inscritos reais!
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Iniciante -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">25%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+                            <p class="text-gray-300 mb-2">+1.000 views + 500 inscritos</p>
+                            <p class="price-tag text-xl mb-2">R$ 69,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20YouTube">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Engajado -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Engajado</h4>
+                            <p class="text-gray-300 mb-2">+5.000 views + 2.000 inscritos</p>
+                            <p class="price-tag text-xl mb-2">R$ 139,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 359,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Engajado%20para%20YouTube">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Relevância -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">35%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Relevância</h4>
+                            <p class="text-gray-300 mb-2">+10.000 views + 5.000 inscritos</p>
+                            <p class="price-tag text-xl mb-2">R$ 249,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 649,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Relevância%20para%20YouTube">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- ================= SPOTIFY ================= -->
-                <section id="spotify" class="hidden transition-all duration-700 ease-in-out">
-                    <!-- Conteúdo similar ao Instagram, adaptado para Spotify -->
+                <section id="spotify" class="platform-section">
+                    <h3 class="text-3xl font-semibold mb-6 text-center section-title">
+                        <i class="fab fa-spotify text-green-500"></i> Pacotes Spotify
+                    </h3>
+                    <p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
+                        Aumente suas streams e seguidores!
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Iniciante -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">25%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+                            <p class="text-gray-300 mb-2">+5.000 streams + 1.000 seguidores</p>
+                            <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 ml-2">R$ 119,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Spotify">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Visibilidade -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">30%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Visibilidade</h4>
+                            <p class="text-gray-300 mb-2">+25.000 streams + 5.000 seguidores</p>
+                            <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through ml-2 text-gray-500">R$ 349,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Visibilidade%20para%20Spotify">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+
+                        <!-- Reconhecimento -->
+                        <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+                            <div class="discount-badge">35%</div>
+                            <h4 class="text-xl font-bold mb-2">Pacote Reconhecimento</h4>
+                            <p class="text-gray-300 mb-2">+50.000 streams + 10.000 seguidores</p>
+                            <p class="price-tag text-xl mb-2">R$ 199,90 <span class="line-through ml-2 text-gray-500">R$ 599,90</span></p>
+                            <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Reconhecimento%20para%20Spotify">
+                                <button class="platform-button w-full">Quero esse</button>
+                            </a>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -723,7 +937,7 @@
                         <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-icon w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-black hover:bg-gray-100 transition">
+                        <a href="https://www.tiktok.com/@agenciagerais" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 transition">
                             <i class="fab fa-tiktok"></i>
                         </a>
                         <a href="https://wa.me/5551990132339" target="_blank" class="social-icon w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition">
@@ -750,28 +964,50 @@
     <!-- AOS Script -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        // Inicializar AOS
         AOS.init({ duration: 800, easing: "ease-in-out", once: true });
         
-        function toggleSection(sectionId) {
-            const sections = document.querySelectorAll('#sections-wrapper > section');
-            const selectors = document.querySelectorAll('.platform-selector');
+        // Sistema de seleção de plataformas - CORRIGIDO
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selecionar todos os cards de plataforma
+            const platformSelectors = document.querySelectorAll('.platform-selector');
+            const platformSections = document.querySelectorAll('.platform-section');
             
-            sections.forEach(sec => {
-                sec.classList.add('hidden');
-                sec.style.maxHeight = '0px';
+            // Função para ativar uma plataforma
+            function activatePlatform(platform) {
+                // Remover classe active de todas as seções e seletores
+                platformSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                platformSelectors.forEach(selector => {
+                    selector.classList.remove('active');
+                });
+                
+                // Ativar a seção correspondente
+                const targetSection = document.getElementById(platform);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Ativar o seletor correspondente
+                const targetSelector = document.querySelector(`[data-platform="${platform}"]`);
+                if (targetSelector) {
+                    targetSelector.classList.add('active');
+                }
+            }
+            
+            // Adicionar event listeners para os seletores
+            platformSelectors.forEach(selector => {
+                selector.addEventListener('click', function() {
+                    const platform = this.getAttribute('data-platform');
+                    activatePlatform(platform);
+                });
             });
             
-            selectors.forEach(sel => {
-                sel.classList.remove('active');
-            });
-            
-            const selected = document.getElementById(sectionId);
-            selected.classList.remove('hidden');
-            selected.style.maxHeight = '5000px';
-            
-            const activeSelector = document.getElementById(sectionId + '-selector');
-            activeSelector.classList.add('active');
-        }
+            // Ativar o Instagram por padrão
+            activatePlatform('instagram');
+        });
         
         // Sistema de notificações (mantido do código original)
         const notificationsDB = {
