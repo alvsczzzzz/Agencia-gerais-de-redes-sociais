@@ -131,516 +131,381 @@
 <!-- Espaço para o cabeçalho fixo -->
 <div class="h-20"></div>
 
-<!-- Seção de Assessoria retirada! --
-  <!-- Seção de Engajamento Direto -->
-  <div class="flex space-x-4">
-    <a href="https://www.instagram.com/agenciageraisoficial" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 transition">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-black hover:bg-gray-100 transition">
-        <i class="fab fa-tiktok"></i>
-    </a>
-    <a href="https://wa.me/5551990132339" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+<!-- Seção de Assessoria retirada! -->
+<!-- Seção de Engajamento Direto -->
+
+<!-- ÍCONES CENTRAIS -->
+<div class="flex justify-center space-x-4 mb-6">
+  <a href="https://www.instagram.com/agenciageraisoficial" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 transition">
+      <i class="fab fa-instagram text-xl"></i>
+  </a>
+  <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition">
+      <i class="fab fa-facebook-f text-xl"></i>
+  </a>
+  <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 transition">
+      <i class="fab fa-tiktok text-xl"></i>
+  </a>
+  <a href="https://wa.me/5551990132339" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition">
+      <i class="fab fa-whatsapp text-xl"></i>
+  </a>
 </div>
-<div class="mt-4">
-    <a href="mailto:agenciagerais@outlook.com" class="text-gray-400 hover:text-primary transition flex items-center">
-        <i class="fas fa-envelope mr-2 text-primary"></i> agenciagerais@outlook.com
-    </a>
+
+<div class="text-center mb-10">
+  <a href="mailto:agenciagerais@outlook.com" class="text-gray-400 hover:text-primary transition flex items-center justify-center">
+      <i class="fas fa-envelope mr-2 text-primary"></i> agenciagerais@outlook.com
+  </a>
 </div>
-  <!-- Seção Instagram -->
-<section class="instagram-theme container mx-auto px-6 py-16 text-center">
-  <h3 class="text-3xl font-semibold mb-6 platform-title" data-aos="fade-up">
-    <i class="fab fa-instagram platform-icon"></i> Pacotes Instagram
+
+<!-- SELECTOR DE PLATAFORMAS (CARDS CLICÁVEIS) -->
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-5xl mx-auto mb-12">
+
+  <div onclick="toggleSection('instagram')" class="cursor-pointer p-6 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
+    <i class="fab fa-instagram text-4xl text-pink-500 mb-2"></i>
+    <h3 class="font-semibold text-lg">Instagram</h3>
+  </div>
+
+  <div onclick="toggleSection('facebook')" class="cursor-pointer p-6 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
+    <i class="fab fa-facebook text-4xl text-blue-500 mb-2"></i>
+    <h3 class="font-semibold text-lg">Facebook</h3>
+  </div>
+
+  <div onclick="toggleSection('tiktok')" class="cursor-pointer p-6 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
+    <i class="fab fa-tiktok text-4xl mb-2"></i>
+    <h3 class="font-semibold text-lg">TikTok</h3>
+  </div>
+
+  <div onclick="toggleSection('youtube')" class="cursor-pointer p-6 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
+    <i class="fab fa-youtube text-4xl text-red-500 mb-2"></i>
+    <h3 class="font-semibold text-lg">YouTube</h3>
+  </div>
+
+  <div onclick="toggleSection('spotify')" class="cursor-pointer p-6 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
+    <i class="fab fa-spotify text-4xl text-green-500 mb-2"></i>
+    <h3 class="font-semibold text-lg">Spotify</h3>
+  </div>
+
+</div>
+
+<!-- ÁREA DE SEÇÕES EXPANDÍVEIS -->
+<div id="sections-wrapper" class="max-w-6xl mx-auto">
+
+<!-- ================= INSTAGRAM ================= -->
+<section id="instagram" class="hidden transition-all duration-700 ease-in-out">
+
+  <h3 class="text-3xl font-semibold mb-6 text-center">
+    <i class="fab fa-instagram"></i> Pacotes Instagram
   </h3>
-  <p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+  <p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
     Impulsione seu Instagram com nossos pacotes de crescimento orgânico!
   </p>
-  
+
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
     <!-- Pacote Star -->
-    <div data-aos="zoom-in" data-aos-delay="100">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">25%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Star⭐</h4>
-        <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 45,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 60,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Entrega gradual em até 7 dias</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Star%20para%20Instagram">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
+    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+      <div class="discount-badge">25%</div>
+      <h4 class="text-xl font-bold mb-2">Pacote Star⭐</h4>
+      <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+      <p class="price-tag text-xl mb-2">R$ 23,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
+      <p class="text-sm text-gray-400 mb-4">Entrega gradual em até 7 dias</p>
+      <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Star%20para%20Instagram">
+        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
+      </a>
     </div>
 
     <!-- Pacote Pro -->
-    <div data-aos="zoom-in" data-aos-delay="200">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">31%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Pro</h4>
-        <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 75,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 110,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Resultados em até 10 dias</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Pro%20para%20Instagram">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
+    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+      <div class="discount-badge">31%</div>
+      <h4 class="text-xl font-bold mb-2">Pacote Pro</h4>
+      <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+      <p class="price-tag text-xl mb-2">R$ 44,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
+      <p class="text-sm text-gray-400 mb-4">Resultados em até 10 dias</p>
+      <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Pro%20para%20Instagram">
+        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
+      </a>
     </div>
 
     <!-- Pacote Turbo -->
-    <div data-aos="zoom-in" data-aos-delay="300">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">32%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Turbo</h4>
-        <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 140,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 210,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Alta performance em 15 dias</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Turbo%20para%20Instagram">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
+    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+      <div class="discount-badge">32%</div>
+      <h4 class="text-xl font-bold mb-2">Pacote Turbo</h4>
+      <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+      <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
+      <p class="text-sm text-gray-400 mb-4">Alta performance em 15 dias</p>
+      <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Turbo%20para%20Instagram">
+        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
+      </a>
     </div>
+
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+
     <!-- Pacote Viral -->
-    <div data-aos="zoom-in" data-aos-delay="400">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">29%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Viral</h4>
-        <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 280,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 400,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Perfeito para viralizar</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Viral%20para%20Instagram">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
+    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+      <div class="discount-badge">29%</div>
+      <h4 class="text-xl font-bold mb-2">Pacote Viral</h4>
+      <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
+      <p class="price-tag text-xl mb-2">R$ 179,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 399,90</span></p>
+      <p class="text-sm text-gray-400 mb-4">Perfeito para viralizar</p>
+      <a href="https://wa.me/5551990132339?text=Pacote%20Viral">
+        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
+      </a>
     </div>
 
     <!-- Pacote Influencer -->
-    <div data-aos="zoom-in" data-aos-delay="500">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
-        <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 500,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 720,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Crescimento acelerado</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Instagram">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
+    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+      <div class="discount-badge">30%</div>
+      <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
+      <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
+      <p class="price-tag text-xl mb-2">R$ 349,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 719,90</span></p>
+      <p class="text-sm text-gray-400 mb-4">Crescimento acelerado</p>
+      <a href="#">
+        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
+      </a>
     </div>
 
     <!-- Pacote Elite -->
-    <div data-aos="zoom-in" data-aos-delay="600">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-        <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 950,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.360,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Resultados profissionais</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Instagram">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
+    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+      <div class="discount-badge">30%</div>
+      <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
+      <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
+      <p class="price-tag text-xl mb-2">R$ 699,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.359,90</span></p>
+      <p class="text-sm text-gray-400 mb-4">Resultados profissionais</p>
+      <a href="#">
+        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
+      </a>
     </div>
+
   </div>
+
 </section>
 
-<!-- Seção Facebook -->
-<section class="facebook-theme container mx-auto px-6 py-16 text-center">
-  <h3 class="text-3xl font-semibold mb-6 platform-title" data-aos="fade-up">
-    <i class="fab fa-facebook platform-icon"></i> Pacotes Facebook
-  </h3>
-  <p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-    Aumente sua presença no Facebook com engajamento real!
-  </p>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Pacote Inicial -->
-    <div data-aos="zoom-in" data-aos-delay="100">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">25%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Inicial</h4>
-        <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 60,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 80,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Crescimento orgânico gradual</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Inicial%20para%20Facebook">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<!-- ================= FACEBOOK ================= -->
+<section id="facebook" class="hidden transition-all duration-700 ease-in-out">
 
-    <!-- Pacote Intermediário -->
-    <div data-aos="zoom-in" data-aos-delay="200">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
-        <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 110,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 160,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Aumente sua visibilidade</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Facebook">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fab fa-facebook"></i> Pacotes Facebook
+</h3>
 
-    <!-- Pacote Avançado -->
-    <div data-aos="zoom-in" data-aos-delay="300">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">35%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
-        <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 200,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 310,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Alcance máximo em 15 dias</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Facebook">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
+  Aumente sua presença no Facebook com engajamento real!
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Inicial -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Inicial</h4>
+    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Crescimento orgânico gradual</p>
+    <a href="#"><button class="platform-button w-full">Quero esse</button></a>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-    <!-- Pacote Profissional -->
-    <div data-aos="zoom-in" data-aos-delay="400">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Profissional</h4>
-        <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 400,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 570,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Perfeito para negócios</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Profissional%20para%20Facebook">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Influencer -->
-    <div data-aos="zoom-in" data-aos-delay="500">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
-        <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 700,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.000,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Autoridade no seu nicho</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Facebook">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Elite -->
-    <div data-aos="zoom-in" data-aos-delay="600">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-        <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 1.300,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.860,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Alcance massivo garantido</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Facebook">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+  <!-- Intermediário -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
+    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 64,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Aumente sua visibilidade</p>
+    <a href="#"><button class="platform-button w-full">Quero esse</button></a>
   </div>
+
+  <!-- Avançado -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
+    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Alcance máximo em 15 dias</p>
+    <a href="#"><button class="platform-button w-full">Quero esse</button></a>
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+
+  <!-- Profissional -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Profissional</h4>
+    <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 289,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 429,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Perfeito para negócios</p>
+    <a href="#"><button class="platform-button w-full">Quero esse</button></a>
+  </div>
+
+  <!-- Influencer -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
+    <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 579,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 819,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Autoridade no nicho</p>
+    <a href="#"><button class="platform-button w-full">Quero esse</button></a>
+  </div>
+
+  <!-- Elite -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
+    <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 1.099,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.599,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Alcance massivo</p>
+    <a href="#"><button class="platform-button w-full">Quero esse</button></a>
+  </div>
+
+</div>
+
 </section>
 
-<!-- Seção TikTok -->
-<section class="tiktok-theme container mx-auto px-6 py-16 text-center">
-  <h3 class="text-3xl font-semibold mb-6 platform-title" data-aos="fade-up">
-    <i class="fab fa-tiktok platform-icon"></i> Pacotes TikTok
-  </h3>
-  <p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-    Viralize seus vídeos e ganhe seguidores reais!
-  </p>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Pacote Iniciante -->
-    <div data-aos="zoom-in" data-aos-delay="100">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">25%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-        <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 80,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 110,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Comece a crescer no TikTok</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20TikTok">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<!-- ================ TIKTOK ================= -->
+<section id="tiktok" class="hidden">
 
-    <!-- Pacote Crescendo -->
-    <div data-aos="zoom-in" data-aos-delay="200">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Crescendo</h4>
-        <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 150,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 220,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Impulsione seus vídeos</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Crescendo%20para%20TikTok">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fab fa-tiktok"></i> Pacotes TikTok
+</h3>
 
-    <!-- Pacote Interativo -->
-    <div data-aos="zoom-in" data-aos-delay="300">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">35%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Interativo</h4>
-        <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 250,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 390,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Aumente seu engajamento</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Interativo%20para%20TikTok">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<div class="text-gray-400 mb-10 text-center">Viralize seus vídeos e cresça rápido!</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Iniciante -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 27,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 79,90</span></p>
+    <p class="text-sm text-gray-400 mb-4">Comece a crescer</p>
+    <button class="platform-button w-full">Quero esse</button>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-    <!-- Pacote Explosão -->
-    <div data-aos="zoom-in" data-aos-delay="400">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Explosão</h4>
-        <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 500,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 720,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Viralize seus conteúdos</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Explosão%20para%20TikTok">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Influencer -->
-    <div data-aos="zoom-in" data-aos-delay="500">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
-        <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 900,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.290,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Seja destaque na plataforma</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20TikTok">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Elite -->
-    <div data-aos="zoom-in" data-aos-delay="600">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-        <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
-        <p class="price-tag text-xl mb-2">R$ 1.600,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 2.290,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Alcance milhões de views</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20TikTok">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+  <!-- Crescendo -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Crescendo</h4>
+    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 49,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 139,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
   </div>
+
+  <!-- Interativo -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Interativo</h4>
+    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
+    <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
+  </div>
+
+</div>
+
 </section>
 
-<!-- Seção YouTube -->
-<section class="youtube-theme container mx-auto px-6 py-16 text-center">
-  <h3 class="text-3xl font-semibold mb-6 platform-title" data-aos="fade-up">
-    <i class="fab fa-youtube platform-icon"></i> Pacotes YouTube
-  </h3>
-  <p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-    Aumente suas visualizações e inscritos organicamente!
-  </p>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Pacote Iniciante -->
-    <div data-aos="zoom-in" data-aos-delay="100">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">25%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-        <p class="text-gray-300 mb-2">+1.000 visualizações + 500 inscritos</p>
-        <p class="price-tag text-xl mb-2">R$ 130,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 180,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Ideal para canais novos</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20YouTube">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<!-- ================ YOUTUBE ================= -->
+<section id="youtube" class="hidden">
 
-    <!-- Pacote Engajado -->
-    <div data-aos="zoom-in" data-aos-delay="200">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Engajado</h4>
-        <p class="text-gray-300 mb-2">+5.000 visualizações + 2.000 inscritos</p>
-        <p class="price-tag text-xl mb-2">R$ 250,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 360,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Melhore seu CTR</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Engajado%20para%20YouTube">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fab fa-youtube"></i> Pacotes YouTube
+</h3>
 
-    <!-- Pacote Relevância -->
-    <div data-aos="zoom-in" data-aos-delay="300">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">35%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Relevância</h4>
-        <p class="text-gray-300 mb-2">+10.000 visualizações + 5.000 inscritos</p>
-        <p class="price-tag text-xl mb-2">R$ 420,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 650,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Apareça nas recomendações</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Relevância%20para%20YouTube">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<div class="text-gray-400 mb-10 text-center">Fortaleça seu canal com inscritos reais!</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Iniciante -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+    <p class="text-gray-300 mb-2">+1.000 views + 500 inscritos</p>
+    <p class="price-tag text-xl mb-2">R$ 69,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-    <!-- Pacote Destaque -->
-    <div data-aos="zoom-in" data-aos-delay="400">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">36%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Destaque</h4>
-        <p class="text-gray-300 mb-2">+50.000 visualizações + 10.000 inscritos</p>
-        <p class="price-tag text-xl mb-2">R$ 900,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.420,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Posicione-se como autoridade</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Destaque%20para%20YouTube">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Influencer -->
-    <div data-aos="zoom-in" data-aos-delay="500">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">36%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
-        <p class="text-gray-300 mb-2">+100.000 visualizações + 20.000 inscritos</p>
-        <p class="price-tag text-xl mb-2">R$ 1.500,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 2.360,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Alcance massa crítica</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20YouTube">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Elite -->
-    <div data-aos="zoom-in" data-aos-delay="600">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">35%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-        <p class="text-gray-300 mb-2">+250.000 visualizações + 50.000 inscritos</p>
-        <p class="price-tag text-xl mb-2">R$ 3.000,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 4.620,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Torne-se referência no seu nicho</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20YouTube">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+  <!-- Engajado -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Engajado</h4>
+    <p class="text-gray-300 mb-2">+5.000 views + 2.000 inscritos</p>
+    <p class="price-tag text-xl mb-2">R$ 139,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 359,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
   </div>
+
+  <!-- Relevância -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Relevância</h4>
+    <p class="text-gray-300 mb-2">+10.000 views + 5.000 inscritos</p>
+    <p class="price-tag text-xl mb-2">R$ 249,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 649,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
+  </div>
+
+</div>
+
 </section>
 
-<!<!-- Seção Spotify -->
-<section class="spotify-theme container mx-auto px-6 py-16 text-center">
-  <h3 class="text-3xl font-semibold mb-6 platform-title" data-aos="fade-up">
-    <i class="fab fa-spotify platform-icon"></i> Pacotes Spotify
-  </h3>
-  <p class="text-gray-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-    Aumente suas streams e seguidores no Spotify!
-  </p>
-  
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <!-- Pacote Iniciante -->
-    <div data-aos="zoom-in" data-aos-delay="100">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">25%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-        <p class="text-gray-300 mb-2">+5.000 streams + 1.000 seguidores</p>
-        <p class="price-tag text-xl mb-2">R$ 160,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 220,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Perfeito para lançamentos</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Spotify">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<!-- ================ SPOTIFY ================= -->
+<section id="spotify" class="hidden">
 
-    <!-- Pacote Visibilidade -->
-    <div data-aos="zoom-in" data-aos-delay="200">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Visibilidade</h4>
-        <p class="text-gray-300 mb-2">+25.000 streams + 5.000 seguidores</p>
-        <p class="price-tag text-xl mb-2">R$ 350,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 500,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Aumente sua base orgânica</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Visibilidade%20para%20Spotify">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<h3 class="text-3xl font-semibold mb-6 text-center">
+  <i class="fab fa-spotify"></i> Pacotes Spotify
+</h3>
 
-    <!-- Pacote Reconhecimento -->
-    <div data-aos="zoom-in" data-aos-delay="300">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">35%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Reconhecimento</h4>
-        <p class="text-gray-300 mb-2">+50.000 streams + 10.000 seguidores</p>
-        <p class="price-tag text-xl mb-2">R$ 600,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 920,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Entre nas playlists algorítmicas</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Reconhecimento%20para%20Spotify">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+<p class="text-gray-400 mb-10 text-center">Aumente suas streams e seguidores!</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  <!-- Iniciante -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">25%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
+    <p class="text-gray-300 mb-2">+5.000 streams + 1.000 seguidores</p>
+    <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 ml-2">R$ 119,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-    <!-- Pacote Nome em Alta -->
-    <div data-aos="zoom-in" data-aos-delay="400">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">40%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Nome em Alta</h4>
-        <p class="text-gray-300 mb-2">+100.000 streams + 20.000 seguidores</p>
-        <p class="price-tag text-xl mb-2">R$ 1.100,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.830,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Chame atenção da indústria</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Nome%20em%20Alta%20para%20Spotify">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Referência -->
-    <div data-aos="zoom-in" data-aos-delay="500">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">28%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Referência</h4>
-        <p class="text-gray-300 mb-2">+250.000 streams + 50.000 seguidores</p>
-        <p class="price-tag text-xl mb-2">R$ 2.000,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 2.780,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Torne-se um artista verified</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Referência%20para%20Spotify">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
-
-    <!-- Pacote Elite -->
-    <div data-aos="zoom-in" data-aos-delay="600">
-      <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-        <div class="discount-badge">30%</div>
-        <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-        <p class="text-gray-300 mb-2">+500.000 streams + 100.000 seguidores</p>
-        <p class="price-tag text-xl mb-2">R$ 3.500,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 5.000,00</span></p>
-        <p class="text-sm text-gray-400 mb-4">Entre para o topo do seu gênero</p>
-        <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Spotify">
-          <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-        </a>
-      </div>
-    </div>
+  <!-- Visibilidade -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">30%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Visibilidade</h4>
+    <p class="text-gray-300 mb-2">+25.000 streams + 5.000 seguidores</p>
+    <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through ml-2 text-gray-500">R$ 349,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
   </div>
+
+  <!-- Reconhecimento -->
+  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
+    <div class="discount-badge">35%</div>
+    <h4 class="text-xl font-bold mb-2">Pacote Reconhecimento</h4>
+    <p class="text-gray-300 mb-2">+50.000 streams + 10.000 seguidores</p>
+    <p class="price-tag text-xl mb-2">R$ 199,90 <span class="line-through ml-2 text-gray-500">R$ 599,90</span></p>
+    <button class="platform-button w-full">Quero esse</button>
+  </div>
+
+</div>
+
 </section>
+
+</div>
+
+<script>
+function toggleSection(sectionId) {
+  const sections = document.querySelectorAll('#sections-wrapper > section')
+
+  sections.forEach(sec => {
+      sec.classList.add('hidden')
+      sec.style.maxHeight = '0px'
+  })
+
+  const selected = document.getElementById(sectionId)
+  selected.classList.remove('hidden')
+  selected.style.maxHeight = '5000px'
+}
+</script>
+
   <!-- Rodapé Premium -->
   <footer class="bg-gray-900 py-12 border-t border-gray-800">
     <div class="container mx-auto px-6">
