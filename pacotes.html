@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agência Gerais - Marketing Digital & Redes Sociais</title>
+    <title>Agência Gerais - Gestão Estratégica de Marketing Digital</title>
     
     <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,944 +12,1020 @@
         theme: {
           extend: {
             colors: {
-              primary: '#8B5CF6',
-              secondary: '#7C3AED',
-              dark: '#1F2937',
-              darker: '#111827'
+              primary: '#D4AF37',  // Dourado Premium
+              secondary: '#C19A6B', // Dourado Suave
+              accent: '#1A365D',    // Azul Profundo
+              light: '#F8F5F0',     // Bege Claro
+              dark: '#121212'       // Preto Suave
+            },
+            fontFamily: {
+              'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+              'display': ['Playfair Display', 'Georgia', 'serif']
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.8s ease-in',
+              'slide-up': 'slideUp 0.6s ease-out',
+              'pulse-slow': 'pulse 3s infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'shimmer': 'shimmer 2s linear infinite'
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' }
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' }
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-468px 0' },
+                '100%': { backgroundPosition: '468px 0' }
+              }
             }
           }
         }
       }
     </script>
     
-    <!-- AOS (Animações ao rolar a página) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        .hero-section {
-            background: linear-gradient(rgba(139, 92, 246, 0.85), rgba(124, 58, 237, 0.9)), 
-                        url('assets/imagem1.png') center/cover no-repeat;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
+            color: #1A365D;
+            overflow-x: hidden;
+        }
+
+        /* Header Premium */
+        .header-premium {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Cards de Serviços */
+        .service-card {
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .wave-shape {
+        .service-card::before {
+            content: '';
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 100px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231F2937' fill-opacity='1' d='M0,224L48,192C96,160,192,96,288,101.3C384,107,480,181,576,218.7C672,256,768,256,864,213.3C960,171,1056,85,1152,69.3C1248,53,1344,107,1392,133.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") bottom/cover no-repeat;
+            height: 4px;
+            background: linear-gradient(90deg, #D4AF37, #C19A6B);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .service-card {
-            transition: all 0.3s ease;
-            border-top: 4px solid transparent;
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            border-top-color: #8B5CF6;
-            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
         }
 
-        .stats-item {
+        /* Badge Premium */
+        .badge-premium {
+            background: linear-gradient(135deg, #D4AF37, #C19A6B);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Botões Premium */
+        .btn-primary {
+            background: linear-gradient(135deg, #D4AF37, #C19A6B);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
             position: relative;
             overflow: hidden;
         }
 
-        .stats-item::before {
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1A365D;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Seção Hero */
+        .hero-section {
+            background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+            animation: float 20s infinite linear;
+        }
+
+        /* Timeline do Processo */
+        .process-timeline {
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, #D4AF37, transparent);
+        }
+
+        .process-step {
+            background: white;
+            border: 2px solid rgba(212, 175, 55, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            border-color: #D4AF37;
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #D4AF37, #C19A6B);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Dashboard Cards */
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #D4AF37, #C19A6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #D4AF37, #C19A6B);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Plataform Cards */
+        .platform-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.2));
-            z-index: -1;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .platform-card {
-            transition: all 0.3s ease;
-            border-top: 4px solid transparent;
+        .platform-card:hover::after {
+            opacity: 1;
         }
 
         .platform-card:hover {
+            border-color: rgba(212, 175, 55, 0.3);
             transform: translateY(-5px);
-            border-top-color: #8B5CF6;
-            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
         }
 
-        .discount-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .platform-button {
-            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
-            color: white;
-            transition: all 0.3s ease;
+        .animate-fade-up {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .platform-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+        /* Notification System */
+        .notification-card {
+            background: white;
+            border-left: 4px solid #D4AF37;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.3s ease-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .floating {
-            animation: float 4s ease-in-out infinite;
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .process-timeline::before {
+                left: 30px;
+            }
+            
+            .process-step {
+                margin-left: 60px;
+            }
+            
+            .step-number {
+                left: -50px;
+                transform: none;
+            }
         }
     </style>
 </head>
-<body class="bg-darker text-gray-100">
+<body class="text-dark">
     
-    <!-- Cabeçalho fixo simplificado (sem script mobile) -->
-<header class="fixed w-full bg-gray-900/90 backdrop-blur-md shadow-lg py-3 z-50 top-0 left-0">
-  <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center px-6 gap-3 sm:gap-0">
-    
-    <!-- Logo e nome -->
-    <div class="flex items-center">
-      <img src="assets/iconagencia.png" alt="Ícone da Agência" class="w-12 h-12 rounded-full mr-3 border-2 border-primary">
-      <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
-        Agência Gerais
-      </h1>
-    </div>
-
-    <!-- Navegação sempre visível -->
-    <nav class="flex flex-wrap justify-center items-center space-x-4 sm:space-x-8">
-      <a href="/" class="text-white hover:text-primary transition-all font-medium flex items-center">
-        <i class="fas fa-home mr-2"></i> Início
-      </a>
-      <a href="/pacotes" class="text-white hover:text-primary transition-all font-medium flex items-center">
-        <i class="fas fa-box-open mr-2"></i> Pacotes
-      </a>
-      <a href="/sobre" class="text-white hover:text-primary transition-all font-medium flex items-center">
-        <i class="fas fa-users mr-2"></i> Quem somos
-      </a>
-      <a href="#resultados" class="px-5 py-2 bg-primary text-white rounded-full font-bold hover:bg-secondary transition-all shadow-lg hover:shadow-primary/30">
-        Resultados
-      </a>
-    </nav>
-
-  </div>
-</header>
-
-<!-- Espaço para o cabeçalho fixo -->
-<div class="h-20"></div>
-
-<!-- Seção de Assessoria retirada! -->
-<!-- Seção de Engajamento Direto -->
-
-<!-- ÍCONES CENTRAIS -->
-<div class="flex justify-center space-x-4 mb-6">
-  <a href="https://www.instagram.com/agenciageraisoficial" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 transition">
-      <i class="fab fa-instagram text-xl"></i>
-  </a>
-  <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition">
-      <i class="fab fa-facebook-f text-xl"></i>
-  </a>
-  <a href="#" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-100 transition">
-      <i class="fab fa-tiktok text-xl"></i>
-  </a>
-  <a href="https://wa.me/5551990132339" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition">
-      <i class="fab fa-whatsapp text-xl"></i>
-  </a>
-</div>
-
-<div class="text-center mb-10">
-  <a href="mailto:agenciagerais@outlook.com" class="text-gray-400 hover:text-primary transition flex items-center justify-center">
-      <i class="fas fa-envelope mr-2 text-primary"></i> agenciagerais@outlook.com
-  </a>
-</div>
-
-<!-- SELECTOR DE PLATAFORMAS (CARDS CLICÁVEIS) -->
-<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 max-w-7xl mx-auto mb-12">
-
-  <div onclick="toggleSection('instagram')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-instagram text-3xl text-pink-500 mb-2"></i>
-    <h3 class="font-semibold text-sm">Instagram</h3>
-  </div>
-
-  <div onclick="toggleSection('facebook')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-facebook text-3xl text-blue-500 mb-2"></i>
-    <h3 class="font-semibold text-sm">Facebook</h3>
-  </div>
-
-  <div onclick="toggleSection('tiktok')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-tiktok text-3xl mb-2"></i>
-    <h3 class="font-semibold text-sm">TikTok</h3>
-  </div>
-
-  <div onclick="toggleSection('youtube')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-youtube text-3xl text-red-500 mb-2"></i>
-    <h3 class="font-semibold text-sm">YouTube</h3>
-  </div>
-
-  <div onclick="toggleSection('spotify')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-spotify text-3xl text-green-500 mb-2"></i>
-    <h3 class="font-semibold text-sm">Spotify</h3>
-  </div>
-
-  <!-- NOVAS PLATAFORMAS -->
-  <div onclick="toggleSection('twitter')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-twitter text-3xl text-blue-400 mb-2"></i>
-    <h3 class="font-semibold text-sm">Twitter/X</h3>
-  </div>
-
-  <div onclick="toggleSection('telegram')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fab fa-telegram text-3xl text-blue-400 mb-2"></i>
-    <h3 class="font-semibold text-sm">Telegram</h3>
-  </div>
-
-  <div onclick="toggleSection('kwai')" class="cursor-pointer p-4 bg-gray-800 rounded-xl shadow hover:scale-105 transition text-center">
-    <i class="fas fa-video text-3xl text-orange-500 mb-2"></i>
-    <h3 class="font-semibold text-sm">Kwai</h3>
-  </div>
-
-</div>
-
-<!-- ÁREA DE SEÇÕES EXPANDÍVEIS -->
-<div id="sections-wrapper" class="max-w-6xl mx-auto">
-
-<!-- ================= INSTAGRAM ================= -->
-<section id="instagram" class="hidden transition-all duration-700 ease-in-out">
-
-  <h3 class="text-3xl font-semibold mb-6 text-center">
-    <i class="fab fa-instagram"></i> Pacotes Instagram
-  </h3>
-  <p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
-    Impulsione seu Instagram com nossos pacotes de crescimento orgânico!
-  </p>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- Pacote Star -->
-    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-      <div class="discount-badge">25%</div>
-      <h4 class="text-xl font-bold mb-2">Pacote Star⭐</h4>
-      <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-      <p class="price-tag text-xl mb-2">R$ 23,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
-      <p class="text-sm text-gray-400 mb-4">Entrega gradual em até 7 dias</p>
-      <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Star%20para%20Instagram">
-        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-      </a>
-    </div>
-
-    <!-- Pacote Pro -->
-    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-      <div class="discount-badge">31%</div>
-      <h4 class="text-xl font-bold mb-2">Pacote Pro</h4>
-      <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-      <p class="price-tag text-xl mb-2">R$ 44,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
-      <p class="text-sm text-gray-400 mb-4">Resultados em até 10 dias</p>
-      <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Pro%20para%20Instagram">
-        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-      </a>
-    </div>
-
-    <!-- Pacote Turbo -->
-    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-      <div class="discount-badge">32%</div>
-      <h4 class="text-xl font-bold mb-2">Pacote Turbo</h4>
-      <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-      <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
-      <p class="text-sm text-gray-400 mb-4">Alta performance em 15 dias</p>
-      <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Turbo%20para%20Instagram">
-        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-      </a>
-    </div>
-
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-
-    <!-- Pacote Viral -->
-    <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-      <div class="discount-badge">29%</div>
-      <h4 class="text-xl font-bold mb-2">Pacote Viral</h4>
-      <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
-      <p class="price-tag text-xl mb-2">R$ 179,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 399,90</span></p>
-      <p class="text-sm text-gray-400 mb-4">Perfeito para viralizar</p>
-      <a href="https://wa.me/5551990132339?text=Pacote%20Viral">
-        <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-      </a>
-    </div>
-
-    <!-- Pacote Influencer -->
-<div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-  <div class="discount-badge">30%</div>
-  <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
-  <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
-  <p class="price-tag text-xl mb-2">R$ 349,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 719,90</span></p>
-  <p class="text-sm text-gray-400 mb-4">Crescimento acelerado</p>
-  <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Instagram">
-    <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-  </a>
-</div>
-
-<!-- Pacote Elite -->
-<div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-  <div class="discount-badge">30%</div>
-  <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-  <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
-  <p class="price-tag text-xl mb-2">R$ 699,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.359,90</span></p>
-  <p class="text-sm text-gray-400 mb-4">Resultados profissionais</p>
-  <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Instagram">
-    <button class="platform-button px-5 py-2 rounded-lg font-semibold w-full">Quero esse</button>
-  </a>
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= FACEBOOK ================= -->
-<section id="facebook" class="hidden transition-all duration-700 ease-in-out">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fab fa-facebook"></i> Pacotes Facebook
-</h3>
-
-<p class="text-gray-400 mb-10 text-center max-w-2xl mx-auto">
-  Aumente sua presença no Facebook com engajamento real!
-</p>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Inicial -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Inicial</h4>
-    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 59,90</span></p>
-    <p class="text-sm text-gray-400 mb-4">Crescimento orgânico gradual</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Inicial%20para%20Facebook">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Intermediário -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
-    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 64,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 94,90</span></p>
-    <p class="text-sm text-gray-400 mb-4">Aumente sua visibilidade</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Facebook">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Avançado -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
-    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 174,90</span></p>
-    <p class="text-sm text-gray-400 mb-4">Alcance máximo em 15 dias</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Facebook">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-
-  <!-- Profissional -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Profissional</h4>
-    <p class="text-gray-300 mb-2">+5.000 seguidores + 10.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 289,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 429,90</span></p>
-    <p class="text-sm text-gray-400 mb-4">Perfeito para negócios</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Profissional%20para%20Facebook">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Influencer -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Influencer</h4>
-    <p class="text-gray-300 mb-2">+10.000 seguidores + 20.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 579,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 819,90</span></p>
-    <p class="text-sm text-gray-400 mb-4">Autoridade no nicho</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Influencer%20para%20Facebook">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Elite -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Elite</h4>
-    <p class="text-gray-300 mb-2">+20.000 seguidores + 50.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 1.099,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 1.599,90</span></p>
-    <p class="text-sm text-gray-400 mb-4">Alcance massivo</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Elite%20para%20Facebook">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-</section>
-
-<!-- ================ TIKTOK ================= -->
-<section id="tiktok" class="hidden">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fab fa-tiktok"></i> Pacotes TikTok
-</h3>
-
-<div class="text-gray-400 mb-10 text-center">Viralize seus vídeos e cresça rápido!</div>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Iniciante -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 27,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 79,90</span></p>
-    <button class="platform-button w-full"
-      onclick="location.href='https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20TikTok'">
-      Quero esse
-    </button>
-  </div>
-
-  <!-- Crescendo -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Crescendo</h4>
-    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 49,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 139,90</span></p>
-    <button class="platform-button w-full"
-      onclick="location.href='https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Crescendo%20para%20TikTok'">
-      Quero esse
-    </button>
-  </div>
-
-  <!-- Interativo -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Interativo</h4>
-    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 89,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
-    <button class="platform-button w-full"
-      onclick="location.href='https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Interativo%20para%20TikTok'">
-      Quero esse
-    </button>
-  </div>
-
-</div>
-
-</section>
-
-<!-- ================ YOUTUBE ================= -->
-<section id="youtube" class="hidden">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fab fa-youtube"></i> Pacotes YouTube
-</h3>
-
-<div class="text-gray-400 mb-10 text-center">Fortaleça seu canal com inscritos reais!</div>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Iniciante -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-    <p class="text-gray-300 mb-2">+1.000 views + 500 inscritos</p>
-    <p class="price-tag text-xl mb-2">R$ 69,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 179,90</span></p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20YouTube">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Engajado -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Engajado</h4>
-    <p class="text-gray-300 mb-2">+5.000 views + 2.000 inscritos</p>
-    <p class="price-tag text-xl mb-2">R$ 139,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 359,90</span></p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Engajado%20para%20YouTube">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Relevância -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Relevância</h4>
-    <p class="text-gray-300 mb-2">+10.000 views + 5.000 inscritos</p>
-    <p class="price-tag text-xl mb-2">R$ 249,90 <span class="line-through text-gray-500 text-sm ml-2">R$ 649,90</span></p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Relevância%20para%20YouTube">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-</section>
-
-<!-- ================ SPOTIFY ================= -->
-<section id="spotify" class="hidden">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fab fa-spotify"></i> Pacotes Spotify
-</h3>
-
-<p class="text-gray-400 mb-10 text-center">Aumente suas streams e seguidores!</p>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Iniciante -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-    <p class="text-gray-300 mb-2">+5.000 streams + 1.000 seguidores</p>
-    <p class="price-tag text-xl mb-2">R$ 39,90 <span class="line-through text-gray-500 ml-2">R$ 119,90</span></p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Spotify">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Visibilidade -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Visibilidade</h4>
-    <p class="text-gray-300 mb-2">+25.000 streams + 5.000 seguidores</p>
-    <p class="price-tag text-xl mb-2">R$ 119,90 <span class="line-through ml-2 text-gray-500">R$ 349,90</span></p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Visibilidade%20para%20Spotify">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Reconhecimento -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Reconhecimento</h4>
-    <p class="text-gray-300 mb-2">+50.000 streams + 10.000 seguidores</p>
-    <p class="price-tag text-xl mb-2">R$ 199,90 <span class="line-through ml-2 text-gray-500">R$ 599,90</span></p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Reconhecimento%20para%20Spotify">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-</section>
-
-<!-- ================ TWITTER/X ================= -->
-<section id="twitter" class="hidden">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fab fa-twitter text-blue-400"></i> Pacotes Twitter/X
-</h3>
-
-<p class="text-gray-400 mb-10 text-center">Aumente seu alcance no Twitter/X!</p>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Iniciante -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 24,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 15,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Crescimento orgânico</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Twitter">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Intermediário -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
-    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 40,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 25,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Engajamento real</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Twitter">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Avançado -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
-    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 64,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 40,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Alta performance</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Twitter">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-</section>
-
-<!-- ================ TELEGRAM ================= -->
-<section id="telegram" class="hidden">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fab fa-telegram text-blue-400"></i> Pacotes Telegram
-</h3>
-
-<p class="text-gray-400 mb-10 text-center">Cresça seu canal no Telegram!</p>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Iniciante -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-    <p class="text-gray-300 mb-2">+500 membros + 1.000 visualizações</p>
-    <p class="price-tag text-xl mb-2">R$ 32,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 20,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Crescimento gradual</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Telegram">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Intermediário -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
-    <p class="text-gray-300 mb-2">+1.000 membros + 2.000 visualizações</p>
-    <p class="price-tag text-xl mb-2">R$ 48,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 30,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Engajamento real</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Telegram">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Avançado -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
-    <p class="text-gray-300 mb-2">+2.000 membros + 4.000 visualizações</p>
-    <p class="price-tag text-xl mb-2">R$ 80,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 50,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Alta performance</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Telegram">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-</section>
-
-<!-- ================ KWAI ================= -->
-<section id="kwai" class="hidden">
-
-<h3 class="text-3xl font-semibold mb-6 text-center">
-  <i class="fas fa-video text-orange-500"></i> Pacotes Kwai
-</h3>
-
-<p class="text-gray-400 mb-10 text-center">Cresça no Kwai com engajamento real!</p>
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-  <!-- Iniciante -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">25%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Iniciante</h4>
-    <p class="text-gray-300 mb-2">+500 seguidores + 1.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 24,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 15,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Crescimento gradual</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Iniciante%20para%20Kwai">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Intermediário -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">30%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Intermediário</h4>
-    <p class="text-gray-300 mb-2">+1.000 seguidores + 2.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 40,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 25,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Engajamento real</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Intermediário%20para%20Kwai">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-  <!-- Avançado -->
-  <div class="platform-card bg-gray-800 p-6 rounded-lg shadow-lg relative">
-    <div class="discount-badge">35%</div>
-    <h4 class="text-xl font-bold mb-2">Pacote Avançado</h4>
-    <p class="text-gray-300 mb-2">+2.000 seguidores + 4.000 curtidas</p>
-    <p class="price-tag text-xl mb-2">R$ 64,00 <span class="line-through text-gray-500 text-sm ml-2">R$ 40,00</span></p>
-    <p class="text-sm text-gray-400 mb-4">Alta performance</p>
-    <a href="https://wa.me/5551990132339?text=Olá%2C%20quero%20o%20Pacote%20Avançado%20para%20Kwai">
-      <button class="platform-button w-full">Quero esse</button>
-    </a>
-  </div>
-
-</div>
-
-</section>
-
-</div>
-
-<script>
-function toggleSection(sectionId) {
-  const sections = document.querySelectorAll('#sections-wrapper > section')
-
-  sections.forEach(sec => {
-      sec.classList.add('hidden')
-      sec.style.maxHeight = '0px'
-  })
-
-  const selected = document.getElementById(sectionId)
-  selected.classList.remove('hidden')
-  selected.style.maxHeight = '5000px'
-}
-</script>
-
-  <!-- Rodapé Premium -->
-  <footer class="bg-gray-900 py-12 border-t border-gray-800">
-    <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-                <div class="flex items-center mb-4">
-                    <img src="assets/iconagencia.png" alt="Ícone da Agência" class="w-10 h-10 rounded-full mr-3">
-                    <h3 class="text-xl font-bold text-white">Agência Gerais</h3>
+    <!-- Header Premium -->
+    <header class="header-premium fixed w-full z-50 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">AG</span>
+                    </div>
+                    <div>
+                        <h1 class="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                            Agência Gerais
+                        </h1>
+                        <p class="text-sm text-gray-600">Gestão Estratégica Digital</p>
+                    </div>
                 </div>
-                <p class="text-gray-400">
-                    Transformando presenças digitais desde 2020 com estratégias inovadoras e resultados comprovados.
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="font-medium text-gray-700 hover:text-primary transition-colors">Início</a>
+                    <a href="#processo" class="font-medium text-gray-700 hover:text-primary transition-colors">Processo</a>
+                    <a href="#servicos" class="font-medium text-gray-700 hover:text-primary transition-colors">Serviços</a>
+                    <a href="#dashboard" class="font-medium text-gray-700 hover:text-primary transition-colors">Dashboard</a>
+                    <a href="#contato" class="btn-primary">Começar Agora</a>
+                </nav>
+
+                <!-- Mobile Menu -->
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Espaço para o header -->
+    <div class="h-20"></div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section py-20 px-6">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center animate-fade-up">
+                <span class="badge-premium inline-block mb-6">Gestão Estratégica Premium</span>
+                <h1 class="font-display text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    Transformamos sua Presença Digital em
+                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Resultados Reais</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+                    Não vendemos bots ou automações. Oferecemos <strong>gestão estratégica completa</strong> com planejamento, execução e acompanhamento personalizado para crescimento orgânico sustentável.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#processo" class="btn-primary">
+                        <i class="fas fa-play-circle mr-2"></i> Ver Nosso Processo
+                    </a>
+                    <a href="#contato" class="btn-secondary">
+                        <i class="fas fa-calendar-check mr-2"></i> Agendar Reunião
+                    </a>
+                </div>
+            </div>
+
+            <!-- Estatísticas de Confiança -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+                <div class="text-center">
+                    <div class="metric-value">500+</div>
+                    <p class="text-gray-600">Clientes Satisfeitos</p>
+                </div>
+                <div class="text-center">
+                    <div class="metric-value">98%</div>
+                    <p class="text-gray-600">Taxa de Retenção</p>
+                </div>
+                <div class="text-center">
+                    <div class="metric-value">4.9</div>
+                    <p class="text-gray-600">Avaliação Média</p>
+                </div>
+                <div class="text-center">
+                    <div class="metric-value">24/7</div>
+                    <p class="text-gray-600">Suporte Premium</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção do Processo -->
+    <section id="processo" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-4">Nosso Processo Estratégico</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Um método comprovado em 4 etapas para garantir seu crescimento digital
                 </p>
             </div>
-            
-            <div>
-                <h4 class="text-lg font-bold text-white mb-4">Links Rápidos</h4>
-                <ul class="space-y-2">
-                    <li><a href="/" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Início
-                    </a></li>
-                    <li><a href="/pacotes" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Pacotes
-                    </a></li>
-                    <li><a href="/sobre" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Quem Somos
-                    </a></li>
-                </ul>
+
+            <div class="process-timeline grid md:grid-cols-2 gap-8 relative">
+                <!-- Etapa 1 -->
+                <div class="process-step animate-fade-up">
+                    <div class="step-number">1</div>
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-comments text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Reunião Estratégica</h3>
+                    <p class="text-gray-600 mb-4">
+                        Análise profunda do seu negócio, definição de objetivos e mapeamento do público-alvo.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Diagnóstico completo</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Definição de metas SMART</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Mapa da jornada do cliente</li>
+                    </ul>
+                </div>
+
+                <!-- Etapa 2 -->
+                <div class="process-step animate-fade-up" style="animation-delay: 0.2s;">
+                    <div class="step-number">2</div>
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-chart-line text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Planejamento Personalizado</h3>
+                    <p class="text-gray-600 mb-4">
+                        Desenvolvimento de estratégias específicas para cada plataforma e criação de calendário de conteúdo.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Estratégia por plataforma</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Calendário de conteúdo</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Plano de investimento</li>
+                    </ul>
+                </div>
+
+                <!-- Etapa 3 -->
+                <div class="process-step animate-fade-up" style="animation-delay: 0.4s;">
+                    <div class="step-number">3</div>
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-rocket text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Execução com Excelência</h3>
+                    <p class="text-gray-600 mb-4">
+                        Implementação das estratégias com acompanhamento diário e otimizações em tempo real.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Gestão diária</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Otimização contínua</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Comunicação constante</li>
+                    </ul>
+                </div>
+
+                <!-- Etapa 4 -->
+                <div class="process-step animate-fade-up" style="animation-delay: 0.6s;">
+                    <div class="step-number">4</div>
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-chart-bar text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Análise e Relatórios</h3>
+                    <p class="text-gray-600 mb-4">
+                        Monitoramento de métricas, relatórios detalhados e reuniões de acompanhamento mensal.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><i class="fas fa-check text-primary mr-2"></i> Relatórios semanais</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Reuniões mensais</li>
+                        <li><i class="fas fa-check text-primary mr-2"></i> Ajustes estratégicos</li>
+                    </ul>
+                </div>
             </div>
-            
-            <div>
-                <h4 class="text-lg font-bold text-white mb-4">Serviços</h4>
-                <ul class="space-y-2">
-                    <li><a href="/pacotes" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Gestão de Redes
-                    </a></li>
-                    <li><a href="/pacotes" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Tráfego Pago
-                    </a></li>
-                    <li><a href="/pacotes" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-chevron-right text-xs mr-2 text-primary"></i> Criação de Conteúdo
-                    </a></li>
-                </ul>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section id="dashboard" class="py-20 px-6 bg-gradient-to-b from-white to-light">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-4">Central de Gestão do Cliente</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Acompanhe em tempo real o crescimento e desempenho das suas campanhas
+                </p>
             </div>
-            
-            <div>
-                <h4 class="text-lg font-bold text-white mb-4">Redes Sociais</h4>
-                <div class="flex space-x-4">
-                    <a href="https://www.instagram.com/agenciageraisoficial" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-pink-500 hover:bg-pink-500/10 transition">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-blue-500 hover:bg-blue-500/10 transition">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-black hover:bg-gray-100 transition">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/5551990132339" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:text-green-500 hover:bg-green-500/10 transition">
-                        <i class="fab fa-whatsapp"></i>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Métrica 1 -->
+                <div class="dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-gray-700">Seguidores</h3>
+                        <i class="fas fa-users text-primary"></i>
+                    </div>
+                    <div class="metric-value">+2,487</div>
+                    <p class="text-sm text-gray-500 mb-4">Este mês</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <!-- Métrica 2 -->
+                <div class="dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-gray-700">Engajamento</h3>
+                        <i class="fas fa-heart text-primary"></i>
+                    </div>
+                    <div class="metric-value">4.8%</div>
+                    <p class="text-sm text-gray-500 mb-4">Taxa média</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 76%"></div>
+                    </div>
+                </div>
+
+                <!-- Métrica 3 -->
+                <div class="dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-gray-700">Conversões</h3>
+                        <i class="fas fa-shopping-cart text-primary"></i>
+                    </div>
+                    <div class="metric-value">42</div>
+                    <p class="text-sm text-gray-500 mb-4">Este mês</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 68%"></div>
+                    </div>
+                </div>
+
+                <!-- Métrica 4 -->
+                <div class="dashboard-card">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-semibold text-gray-700">ROI</h3>
+                        <i class="fas fa-chart-pie text-primary"></i>
+                    </div>
+                    <div class="metric-value">3.2x</div>
+                    <p class="text-sm text-gray-500 mb-4">Retorno sobre investimento</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 92%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próximas Tarefas -->
+            <div class="mt-12 dashboard-card">
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i class="fas fa-tasks text-primary mr-3"></i>
+                    Próximas Etapas do Seu Plano
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 bg-light rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-video text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Reunião de Acompanhamento</h4>
+                                <p class="text-sm text-gray-500">15 de Novembro, 14:00</p>
+                            </div>
+                        </div>
+                        <span class="badge-premium">Agendada</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between p-4 bg-light rounded-lg">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-line text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Relatório Mensal</h4>
+                                <p class="text-sm text-gray-500">Disponível em 2 dias</p>
+                            </div>
+                        </div>
+                        <span class="badge-premium">Em Andamento</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços -->
+    <section id="servicos" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold mb-4">Soluções de Gestão Completa</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Pacotes estratégicos desenvolvidos para diferentes necessidades de crescimento
+                </p>
+            </div>
+
+            <!-- Cards de Plataformas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="platform-card text-center">
+                    <i class="fab fa-instagram text-3xl text-pink-500 mb-3"></i>
+                    <h4 class="font-semibold">Instagram</h4>
+                </div>
+                <div class="platform-card text-center">
+                    <i class="fab fa-facebook text-3xl text-blue-600 mb-3"></i>
+                    <h4 class="font-semibold">Facebook</h4>
+                </div>
+                <div class="platform-card text-center">
+                    <i class="fab fa-tiktok text-3xl mb-3"></i>
+                    <h4 class="font-semibold">TikTok</h4>
+                </div>
+                <div class="platform-card text-center">
+                    <i class="fab fa-youtube text-3xl text-red-600 mb-3"></i>
+                    <h4 class="font-semibold">YouTube</h4>
+                </div>
+            </div>
+
+            <!-- Pacotes de Serviços -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pacote Essencial -->
+                <div class="service-card p-8">
+                    <div class="badge-premium inline-block mb-4">Essencial</div>
+                    <h3 class="text-2xl font-bold mb-4">Gestão Básica</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">R$ 1.490</span>
+                        <span class="text-gray-500">/mês</span>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Gestão de 1 plataforma
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            15 posts/mês
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Relatório semanal
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            1 reunião mensal
+                        </li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5551990132339?text=Olá%2C%20tenho%20interesse%20no%20Pacote%20Essencial%20de%20Gestão" 
+                       class="btn-secondary w-full text-center block">
+                        Solicitar Proposta
                     </a>
                 </div>
-                <div class="mt-4">
-                    <a href="mailto:agenciagerais@outlook.com" class="text-gray-400 hover:text-primary transition flex items-center">
-                        <i class="fas fa-envelope mr-2 text-primary"></i> agenciagerais@outlook.com
+
+                <!-- Pacote Profissional -->
+                <div class="service-card p-8 relative border-2 border-primary">
+                    <div class="absolute top-4 right-4">
+                        <span class="badge-premium bg-accent text-white">Recomendado</span>
+                    </div>
+                    <div class="badge-premium inline-block mb-4">Profissional</div>
+                    <h3 class="text-2xl font-bold mb-4">Gestão Completa</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">R$ 2.990</span>
+                        <span class="text-gray-500">/mês</span>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Gestão de 3 plataformas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            30 posts/mês
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Gestão de tráfego pago
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            2 reuniões mensais
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Relatório detalhado
+                        </li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5551990132339?text=Olá%2C%20tenho%20interesse%20no%20Pacote%20Profissional%20de%20Gestão" 
+                       class="btn-primary w-full text-center block">
+                        Começar Agora
+                    </a>
+                </div>
+
+                <!-- Pacote Enterprise -->
+                <div class="service-card p-8">
+                    <div class="badge-premium inline-block mb-4">Enterprise</div>
+                    <h3 class="text-2xl font-bold mb-4">Gestão Corporativa</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold">R$ 5.990</span>
+                        <span class="text-gray-500">/mês</span>
+                    </div>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Gestão de 5+ plataformas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Posts ilimitados
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Estratégia multicanál
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Suporte prioritário 24/7
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-primary mr-3"></i>
+                            Relatório executivo
+                        </li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5551990132339?text=Olá%2C%20tenho%20interesse%20no%20Pacote%20Enterprise%20de%20Gestão" 
+                       class="btn-secondary w-full text-center block">
+                        Falar com Especialista
                     </a>
                 </div>
             </div>
         </div>
-        
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© 2025 Agência Gerais. Todos os direitos reservados.</p>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contato" class="py-20 px-6 bg-accent text-white">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl font-bold mb-4">Pronto para Transformar sua Presença Digital?</h2>
+                <p class="text-xl opacity-90">
+                    Agende uma reunião estratégica gratuita com nossa equipe
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5551990132339" target="_blank" 
+                   class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-all group">
+                    <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-whatsapp text-2xl text-green-400"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
+                    <p class="opacity-80">Conversa rápida e direta</p>
+                </a>
+
+                <!-- E-mail -->
+                <a href="mailto:agenciagerais@outlook.com" 
+                   class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-all group">
+                    <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-envelope text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">E-mail</h3>
+                    <p class="opacity-80">Propostas detalhadas</p>
+                </a>
+
+                <!-- Calendly -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Agendamento</h3>
+                    <p class="opacity-80 mb-4">Escolha o melhor horário</p>
+                    <button onclick="alert('Sistema de agendamento em desenvolvimento')" 
+                            class="btn-primary w-full">
+                        Agendar Reunião
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </section>
 
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, easing: "ease-in-out", once: true });
-  </script>
-  <!-- Sistema de Notificações de Social Proof -->
-<div id="notifications-container" class="fixed bottom-4 right-4 z-[100] w-80 space-y-3"></div>
-
-<script>
-  // Banco de dados de notificações
-  const notificationsDB = {
-    purchases: [
-      { name: "Ana C.", package: "Pacote Turbo", platform: "Instagram", time: "2 min atrás", rating: 5 },
-      { name: "Marcos R.", package: "Pacote Elite", platform: "YouTube", time: "5 min atrás", rating: 5 },
-      { name: "Carla S.", package: "Pacote Explosão", platform: "TikTok", time: "10 min atrás", rating: 4 },
-      { name: "Digital Growth", package: "Pacote Avançado", platform: "Facebook", time: "15 min atrás", rating: 5 },
-      { name: "Agência Top", package: "Pacote Referência", platform: "Spotify", time: "20 min atrás", rating: 5 }
-    ],
-    reviews: [
-      { name: "Lucas M.", comment: "Resultados além do esperado! Meu perfil explodiu!", rating: 5 },
-      { name: "Beatriz F.", comment: "Atendimento excelente e entrega rápida", rating: 5 },
-      { name: "Ricardo K.", comment: "Minhas streams aumentaram 300%", rating: 4 },
-      { name: "Agência Social", comment: "Melhor custo-benefício do mercado", rating: 5 }
-    ],
-    milestones: [
-      { text: "🎉 157 pacotes vendidos esta semana!" },
-      { text: "🔥 5 novos clientes VIP nesta hora" },
-      { text: "⭐ Média de 4.9/5 nas avaliações" }
-    ]
-  };
-
-  // Gerador de avatares aleatórios
-  function getRandomAvatar(name) {
-    const colors = ['FFAD08', 'EDD75A', '73B06F', '0C8F8F', '405059'];
-    const initial = name.charAt(0);
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    return `https://ui-avatars.com/api/?name=${initial}&background=${color}&color=fff&rounded=true&size=40`;
-  }
-
-  // Formatador de tempo
-  function formatTimeAgo(minutes) {
-    if (minutes < 1) return "agora mesmo";
-    if (minutes < 60) return `${minutes} min atrás`;
-    const hours = Math.floor(minutes / 60);
-    return `${hours} ${hours === 1 ? 'hora' : 'horas'} atrás`;
-  }
-
-  // Criador de notificações
-  function createNotification() {
-    const container = document.getElementById('notifications-container');
-    const notification = document.createElement('div');
-    
-    // Tipos de notificação (40% compras, 40% reviews, 20% milestones)
-    const notificationType = Math.random() < 0.4 ? 'purchases' : 
-                           (Math.random() < 0.8 ? 'reviews' : 'milestones');
-    
-    const data = notificationsDB[notificationType];
-    const item = data[Math.floor(Math.random() * data.length)];
-    
-    // Estilo base
-    notification.className = `animate-fade-in-up bg-white text-gray-800 p-3 rounded-xl shadow-lg border-l-4 border-purple-600 flex items-start mb-2`;
-    
-    // Conteúdo dinâmico
-    if (notificationType === 'purchases') {
-      notification.innerHTML = `
-        <img src="${getRandomAvatar(item.name)}" alt="${item.name}" class="w-8 h-8 rounded-full mr-3">
-        <div class="flex-1">
-          <div class="font-semibold text-sm">${item.name}</div>
-          <div class="text-xs opacity-80">Comprou ${item.package} para ${item.platform}</div>
-          <div class="flex items-center mt-1">
-            ${'★'.repeat(item.rating)}${'☆'.repeat(5-item.rating)}
-            <span class="text-xs text-gray-500 ml-2">${formatTimeAgo(parseInt(item.time))}</span>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                            <span class="text-white font-bold">AG</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold">Agência Gerais</h3>
+                    </div>
+                    <p class="text-gray-400">
+                        Transformando presenças digitais em resultados reais através de gestão estratégica e acompanhamento personalizado.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Serviços</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#servicos" class="hover:text-primary transition-colors">Gestão de Redes</a></li>
+                        <li><a href="#servicos" class="hover:text-primary transition-colors">Tráfego Pago</a></li>
+                        <li><a href="#servicos" class="hover:text-primary transition-colors">Estratégia Digital</a></li>
+                        <li><a href="#servicos" class="hover:text-primary transition-colors">Consultoria</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#dashboard" class="hover:text-primary transition-colors">Área do Cliente</a></li>
+                        <li><a href="#processo" class="hover:text-primary transition-colors">Nosso Processo</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Cases de Sucesso</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contato</h4>
+                    <div class="space-y-3 text-gray-400">
+                        <p class="flex items-center">
+                            <i class="fas fa-phone text-primary mr-2"></i>
+                            (51) 99901-3239
+                        </p>
+                        <p class="flex items-center">
+                            <i class="fas fa-envelope text-primary mr-2"></i>
+                            agenciagerais@outlook.com
+                        </p>
+                        <div class="flex space-x-3 pt-2">
+                            <a href="https://www.instagram.com/agenciageraisoficial" target="_blank" 
+                               class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.facebook.com/people/Ag%C3%AAncia-Gerais-de-Redes-Sociais/61574773929243/" target="_blank" 
+                               class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" 
+                               class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-black transition-colors">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>© 2025 Agência Gerais. Todos os direitos reservados.</p>
+                <p class="text-sm mt-2">Gestão Estratégica de Marketing Digital</p>
+            </div>
         </div>
-        <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-purple-600 ml-2">✕</button>
-      `;
-    } 
-    else if (notificationType === 'reviews') {
-      notification.innerHTML = `
-        <img src="${getRandomAvatar(item.name)}" alt="${item.name}" class="w-8 h-8 rounded-full mr-3">
-        <div class="flex-1">
-          <div class="font-semibold text-sm">${item.name}</div>
-          <div class="text-xs italic">"${item.comment}"</div>
-          <div class="flex items-center mt-1">
-            ${'★'.repeat(item.rating)}${'☆'.repeat(5-item.rating)}
-            <span class="text-xs text-gray-500 ml-2">Avaliação</span>
-          </div>
-        </div>
-        <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-purple-600 ml-2">✕</button>
-      `;
-    }
-    else {
-      notification.className = `animate-fade-in-up bg-purple-600 text-white p-3 rounded-xl shadow-lg flex items-center mb-2`;
-      notification.innerHTML = `
-        <div class="flex-1 text-center font-medium text-sm">${item.text}</div>
-        <button onclick="this.parentElement.remove()" class="text-white opacity-70 hover:opacity-100 ml-2">✕</button>
-      `;
-    }
-    
-    container.appendChild(notification);
-    
-    // Remove após 6 segundos
-    setTimeout(() => {
-      notification.classList.add('animate-fade-out');
-      setTimeout(() => notification.remove(), 500);
-    }, 6000);
-  }
+    </footer>
 
-  // Configuração do sistema
-  setTimeout(createNotification, 3000); // Primeira notificação
-  const notificationInterval = setInterval(createNotification, Math.random() * 10000 + 8000); // 8-18s
+    <!-- Sistema de Notificações -->
+    <div id="notifications-container" class="fixed bottom-6 right-6 z-50 w-80 space-y-3"></div>
 
-  // Animations CSS
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(10px) scale(0.95); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
-    .animate-fade-in-up {
-      animation: fadeInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-    .animate-fade-out {
-      animation: fadeOut 0.4s ease-out forwards;
-    }
-    #notifications-container div {
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-    }
-  `;
-  document.head.appendChild(style);
-</script>
+    <script>
+        // Sistema de notificações atualizado
+        const notificationsDB = {
+            milestones: [
+                { 
+                    name: "Maria Silva", 
+                    achievement: "Meta de seguidores alcançada", 
+                    details: "+2.000 seguidores este mês",
+                    time: "2 horas atrás" 
+                },
+                { 
+                    name: "Tech Solutions", 
+                    achievement: "ROI otimizado", 
+                    details: "Retorno aumentado em 45%",
+                    time: "4 horas atrás" 
+                },
+                { 
+                    name: "Beauty Store", 
+                    achievement: "Campanha viralizada", 
+                    details: "25k views em 24h",
+                    time: "1 dia atrás" 
+                }
+            ],
+            updates: [
+                { 
+                    text: "📊 Seu relatório mensal está disponível",
+                    action: "Ver Relatório",
+                    time: "Hoje" 
+                },
+                { 
+                    text: "✅ Próxima reunião agendada para amanhã",
+                    action: "Confirmar",
+                    time: "2 dias atrás" 
+                },
+                { 
+                    text: "🎯 Meta trimestral 85% concluída",
+                    action: "Ver Progresso",
+                    time: "3 dias atrás" 
+                }
+            ]
+        };
+
+        function createNotification() {
+            const container = document.getElementById('notifications-container');
+            const notification = document.createElement('div');
+            
+            const type = Math.random() < 0.5 ? 'milestones' : 'updates';
+            const data = notificationsDB[type];
+            const item = data[Math.floor(Math.random() * data.length)];
+            
+            notification.className = `notification-card animate-slide-up`;
+            
+            if (type === 'milestones') {
+                notification.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-trophy text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-semibold text-dark">${item.name}</div>
+                            <div class="text-sm text-primary font-medium">${item.achievement}</div>
+                            <div class="text-xs text-gray-500 mt-1">${item.details}</div>
+                            <div class="text-xs text-gray-400 mt-2">${item.time}</div>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" class="text-gray-400 hover:text-dark ml-2">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            } else {
+                notification.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-bell text-accent"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-medium text-dark">${item.text}</div>
+                            <div class="flex items-center justify-between mt-3">
+                                <span class="text-xs text-gray-400">${item.time}</span>
+                                <button class="text-xs font-medium text-primary hover:underline">
+                                    ${item.action} →
+                                </button>
+                            </div>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" class="text-gray-400 hover:text-dark ml-2">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+            }
+            
+            container.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
+        }
+
+        // Iniciar notificações
+        setTimeout(createNotification, 3000);
+        setInterval(createNotification, Math.random() * 15000 + 10000);
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-up');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animação
+        document.querySelectorAll('.service-card, .process-step, .dashboard-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
