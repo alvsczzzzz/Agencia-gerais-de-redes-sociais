@@ -12,11 +12,11 @@
         theme: {
           extend: {
             colors: {
-              primary: '#D4AF37',  // Dourado Premium
-              secondary: '#C19A6B', // Dourado Suave
-              accent: '#1A365D',    // Azul Profundo
-              light: '#F8F5F0',     // Bege Claro
-              dark: '#121212'       // Preto Suave
+              primary: '#D4AF37',
+              secondary: '#C19A6B',
+              accent: '#1A365D',
+              light: '#F8F5F0',
+              dark: '#121212'
             },
             fontFamily: {
               'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
@@ -25,9 +25,13 @@
             animation: {
               'fade-in': 'fadeIn 0.8s ease-in',
               'slide-up': 'slideUp 0.6s ease-out',
-              'pulse-slow': 'pulse 3s infinite',
+              'slide-down': 'slideDown 0.6s ease-out',
               'float': 'float 6s ease-in-out infinite',
-              'shimmer': 'shimmer 2s linear infinite'
+              'shimmer': 'shimmer 2s linear infinite',
+              'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+              'bounce-soft': 'bounceSoft 2s infinite',
+              'scale-in': 'scaleIn 0.5s ease-out',
+              'rotate-3d': 'rotate3d 20s infinite linear'
             },
             keyframes: {
               fadeIn: {
@@ -38,9 +42,29 @@
                 '0%': { transform: 'translateY(20px)', opacity: '0' },
                 '100%': { transform: 'translateY(0)', opacity: '1' }
               },
+              slideDown: {
+                '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' }
+              },
               float: {
+                '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                '50%': { transform: 'translateY(-10px) rotate(1deg)' }
+              },
+              pulseSoft: {
+                '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '0.8', transform: 'scale(1.02)' }
+              },
+              bounceSoft: {
                 '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' }
+                '50%': { transform: 'translateY(-5px)' }
+              },
+              scaleIn: {
+                '0%': { transform: 'scale(0.95)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
+              },
+              rotate3d: {
+                '0%': { transform: 'rotateY(0deg)' },
+                '100%': { transform: 'rotateY(360deg)' }
               },
               shimmer: {
                 '0%': { backgroundPosition: '-468px 0' },
@@ -72,294 +96,237 @@
 
         /* Header Premium */
         .header-premium {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
         }
 
-        /* Cards de Serviços */
-        .service-card {
-            background: white;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 20px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #D4AF37, #C19A6B);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
-            border-color: rgba(212, 175, 55, 0.3);
-        }
-
-        /* Badge Premium */
-        .badge-premium {
-            background: linear-gradient(135deg, #D4AF37, #C19A6B);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        /* Botões Premium */
-        .btn-primary {
-            background: linear-gradient(135deg, #D4AF37, #C19A6B);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-primary:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: #1A365D;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
+        /* Cards Flutuantes */
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
             transition: all 0.3s ease;
         }
 
-        .btn-secondary:hover {
-            border-color: #D4AF37;
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateY(-2px);
+        .floating-card:hover {
+            animation-play-state: paused;
+            transform: translateY(-5px) scale(1.02);
         }
 
-        /* Seção Hero */
-        .hero-section {
-            background: linear-gradient(135deg, #F8F5F0 0%, #FFFFFF 100%);
+        /* Efeito de brilho sutil */
+        .glow-effect {
             position: relative;
             overflow: hidden;
         }
 
-        .hero-section::before {
+        .glow-effect::after {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
-            animation: float 20s infinite linear;
-        }
-
-        /* Timeline do Processo */
-        .process-timeline {
-            position: relative;
-        }
-
-        .process-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, #D4AF37, transparent);
-        }
-
-        .process-step {
-            background: white;
-            border: 2px solid rgba(212, 175, 55, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .process-step:hover {
-            border-color: #D4AF37;
-            transform: translateX(5px);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #D4AF37, #C19A6B);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.25rem;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Dashboard Cards */
-        .dashboard-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .dashboard-card:hover {
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .metric-value {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #D4AF37, #C19A6B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            height: 8px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #D4AF37, #C19A6B);
-            border-radius: 4px;
-            transition: width 1s ease-in-out;
-        }
-
-        /* Plataform Cards */
-        .platform-card {
-            background: white;
-            border-radius: 16px;
-            padding: 25px;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .platform-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
-        .platform-card:hover::after {
+        .glow-effect:hover::after {
             opacity: 1;
         }
 
-        .platform-card:hover {
-            border-color: rgba(212, 175, 55, 0.3);
-            transform: translateY(-5px);
+        /* Botão flutuante */
+        .floating-button {
+            animation: bounceSoft 2s infinite;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
-        /* Animações */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .floating-button:hover {
+            animation-play-state: paused;
         }
 
-        .animate-fade-up {
-            animation: fadeInUp 0.6s ease-out forwards;
+        /* Modal de Agendamento */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
         }
 
-        /* Notification System */
-        .notification-card {
+        .modal-content {
             background: white;
-            border-left: 4px solid #D4AF37;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            animation: slideUp 0.3s ease-out;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 500px;
+            animation: scaleIn 0.4s ease-out;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .process-timeline::before {
-                left: 30px;
-            }
-            
-            .process-step {
-                margin-left: 60px;
-            }
-            
-            .step-number {
-                left: -50px;
-                transform: none;
-            }
+        /* Input estilizado */
+        .styled-input {
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 14px 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .styled-input:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            outline: none;
+        }
+
+        /* Radio button personalizado */
+        .radio-option {
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option:hover {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .radio-option.selected {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Loader animado */
+        .loader {
+            border: 3px solid rgba(212, 175, 55, 0.1);
+            border-top: 3px solid #D4AF37;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Cards com efeito 3D */
+        .card-3d {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.5s ease;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(2deg);
+        }
+
+        /* Elementos de background animados */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            animation: float 15s infinite linear;
+            z-index: -1;
+        }
+
+        /* Animações em cascata */
+        .animate-cascade > * {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .animate-cascade > *:nth-child(1) { animation-delay: 0.1s; }
+        .animate-cascade > *:nth-child(2) { animation-delay: 0.2s; }
+        .animate-cascade > *:nth-child(3) { animation-delay: 0.3s; }
+        .animate-cascade > *:nth-child(4) { animation-delay: 0.4s; }
+        .animate-cascade > *:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Progress steps */
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step.active {
+            background: #D4AF37;
+            border-color: #D4AF37;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .progress-step.completed {
+            background: #10B981;
+            border-color: #10B981;
+            color: white;
+        }
+
+        /* Efeito de digitação */
+        .typing-effect {
+            overflow: hidden;
+            border-right: 3px solid #D4AF37;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #D4AF37 }
+        }
+
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #C19A6B 50%, #1A365D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
     </style>
 </head>
 <body class="text-dark">
     
     <!-- Header Premium -->
-    <header class="header-premium fixed w-full z-50 py-4">
+    <header class="header-premium fixed w-full z-50 py-4 animate-slide-down">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center hover-lift cursor-pointer">
                         <span class="text-white font-bold text-xl">AG</span>
                     </div>
                     <div>
@@ -372,62 +339,248 @@
 
                 <!-- Navigation -->
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="font-medium text-gray-700 hover:text-primary transition-colors">Início</a>
-                    <a href="#processo" class="font-medium text-gray-700 hover:text-primary transition-colors">Processo</a>
-                    <a href="#servicos" class="font-medium text-gray-700 hover:text-primary transition-colors">Serviços</a>
-                    <a href="#dashboard" class="font-medium text-gray-700 hover:text-primary transition-colors">Dashboard</a>
-                    <a href="#contato" class="btn-primary">Começar Agora</a>
+                    <a href="#inicio" class="font-medium text-gray-700 hover:text-primary transition-colors hover-lift px-3 py-2 rounded-lg">Início</a>
+                    <a href="#processo" class="font-medium text-gray-700 hover:text-primary transition-colors hover-lift px-3 py-2 rounded-lg">Processo</a>
+                    <a href="#servicos" class="font-medium text-gray-700 hover:text-primary transition-colors hover-lift px-3 py-2 rounded-lg">Serviços</a>
+                    <a href="#resultados" class="font-medium text-gray-700 hover:text-primary transition-colors hover-lift px-3 py-2 rounded-lg">Resultados</a>
+                    <button onclick="openSchedulingModal()" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl font-semibold hover-lift transition-all duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i> Agendar Reunião
+                    </button>
                 </nav>
 
                 <!-- Mobile Menu -->
-                <button class="md:hidden text-gray-700">
+                <button class="md:hidden text-gray-700 hover:text-primary transition-colors">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- Botão Flutuante para Agendamento -->
+    <button onclick="openSchedulingModal()" 
+            class="floating-button fixed bottom-6 right-6 z-40 bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+        <i class="fas fa-calendar-alt text-xl"></i>
+    </button>
+
+    <!-- Modal de Agendamento -->
+    <div id="schedulingModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="bg-gradient-to-r from-primary to-secondary p-6 text-white">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="font-display text-2xl font-bold">Agendar Reunião Estratégica</h2>
+                        <p class="opacity-90">Vamos planejar seu crescimento digital</p>
+                    </div>
+                    <button onclick="closeSchedulingModal()" class="text-white hover:text-gray-200 transition-colors">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <form id="schedulingForm" class="p-6">
+                <!-- Progress Steps -->
+                <div class="flex justify-between mb-8">
+                    <div class="progress-step active">1</div>
+                    <div class="flex-1 h-1 bg-gray-200 mx-4 mt-5"></div>
+                    <div class="progress-step">2</div>
+                    <div class="flex-1 h-1 bg-gray-200 mx-4 mt-5"></div>
+                    <div class="progress-step">3</div>
+                </div>
+
+                <!-- Step 1: Informações Básicas -->
+                <div id="step1" class="step-content">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2 font-medium">Nome Completo *</label>
+                        <input type="text" id="clientName" class="styled-input w-full" placeholder="Seu nome completo" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2 font-medium">E-mail *</label>
+                        <input type="email" id="clientEmail" class="styled-input w-full" placeholder="seu@email.com" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2 font-medium">WhatsApp *</label>
+                        <input type="tel" id="clientPhone" class="styled-input w-full" placeholder="(51) 99999-9999" required>
+                    </div>
+                    
+                    <button type="button" onclick="nextStep()" class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-xl font-semibold hover-lift transition-all">
+                        Continuar <i class="fas fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+
+                <!-- Step 2: Detalhes da Reunião -->
+                <div id="step2" class="step-content hidden">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-3 font-medium">Melhor horário para reunião *</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="radio-option" onclick="selectOption(this, 'manha')">
+                                <input type="radio" name="horario" value="manha" class="hidden">
+                                <div class="text-center">
+                                    <i class="fas fa-sun text-2xl text-yellow-500 mb-2"></i>
+                                    <div class="font-medium">Manhã</div>
+                                    <div class="text-sm text-gray-500">8h - 12h</div>
+                                </div>
+                            </label>
+                            <label class="radio-option" onclick="selectOption(this, 'tarde')">
+                                <input type="radio" name="horario" value="tarde" class="hidden">
+                                <div class="text-center">
+                                    <i class="fas fa-clock text-2xl text-orange-500 mb-2"></i>
+                                    <div class="font-medium">Tarde</div>
+                                    <div class="text-sm text-gray-500">13h - 18h</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-3 font-medium">Plataforma preferida *</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="radio-option" onclick="selectOption(this, 'google-meet')">
+                                <input type="radio" name="plataforma" value="google-meet" class="hidden">
+                                <div class="text-center">
+                                    <i class="fab fa-google text-2xl text-red-500 mb-2"></i>
+                                    <div class="font-medium">Google Meet</div>
+                                </div>
+                            </label>
+                            <label class="radio-option" onclick="selectOption(this, 'zoom')">
+                                <input type="radio" name="plataforma" value="zoom" class="hidden">
+                                <div class="text-center">
+                                    <i class="fas fa-video text-2xl text-blue-500 mb-2"></i>
+                                    <div class="font-medium">Zoom</div>
+                                </div>
+                            </label>
+                            <label class="radio-option" onclick="selectOption(this, 'whatsapp')">
+                                <input type="radio" name="plataforma" value="whatsapp" class="hidden">
+                                <div class="text-center">
+                                    <i class="fab fa-whatsapp text-2xl text-green-500 mb-2"></i>
+                                    <div class="font-medium">WhatsApp</div>
+                                </div>
+                            </label>
+                            <label class="radio-option" onclick="selectOption(this, 'telefone')">
+                                <input type="radio" name="plataforma" value="telefone" class="hidden">
+                                <div class="text-center">
+                                    <i class="fas fa-phone text-2xl text-purple-500 mb-2"></i>
+                                    <div class="font-medium">Telefone</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button type="button" onclick="prevStep()" class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all">
+                            <i class="fas fa-arrow-left mr-2"></i> Voltar
+                        </button>
+                        <button type="button" onclick="nextStep()" class="flex-1 bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-xl font-semibold hover-lift transition-all">
+                            Continuar <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Interesse e Confirmação -->
+                <div id="step3" class="step-content hidden">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-3 font-medium">Principal interesse *</label>
+                        <select id="interesse" class="styled-input w-full">
+                            <option value="">Selecione seu principal interesse</option>
+                            <option value="gestao-redes">Gestão de Redes Sociais</option>
+                            <option value="trafego-pago">Tráfego Pago (Ads)</option>
+                            <option value="estrategia-completa">Estratégia Completa</option>
+                            <option value="consultoria">Consultoria Individual</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-3 font-medium">Atendente preferido (opcional)</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="radio-option" onclick="selectOption(this, 'especialista1')">
+                                <input type="radio" name="atendente" value="especialista1" class="hidden">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary mx-auto mb-2"></div>
+                                    <div class="font-medium">Ana Silva</div>
+                                    <div class="text-xs text-gray-500">Especialista em Instagram</div>
+                                </div>
+                            </label>
+                            <label class="radio-option" onclick="selectOption(this, 'especialista2')">
+                                <input type="radio" name="atendente" value="especialista2" class="hidden">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 mx-auto mb-2"></div>
+                                    <div class="font-medium">Carlos Mendes</div>
+                                    <div class="text-xs text-gray-500">Especialista em Tráfego</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2 font-medium">Mensagem adicional (opcional)</label>
+                        <textarea id="mensagem" class="styled-input w-full" rows="3" placeholder="Alguma informação importante que devemos saber..."></textarea>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button type="button" onclick="prevStep()" class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all">
+                            <i class="fas fa-arrow-left mr-2"></i> Voltar
+                        </button>
+                        <button type="button" onclick="submitScheduling()" class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-semibold hover-lift transition-all">
+                            <i class="fas fa-whatsapp mr-2"></i> Agendar via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Espaço para o header -->
     <div class="h-20"></div>
 
     <!-- Hero Section -->
-    <section id="inicio" class="hero-section py-20 px-6">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center animate-fade-up">
-                <span class="badge-premium inline-block mb-6">Gestão Estratégica Premium</span>
+    <section id="inicio" class="hero-section py-20 px-6 relative overflow-hidden">
+        <!-- Elementos de fundo animados -->
+        <div class="bg-element w-64 h-64 -top-20 -left-20"></div>
+        <div class="bg-element w-96 h-96 -bottom-40 -right-40"></div>
+        <div class="bg-element w-48 h-48 top-1/2 left-1/4"></div>
+        
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="text-center animate-cascade">
+                <div class="inline-block mb-6">
+                    <span class="bg-gradient-to-r from-primary to-secondary text-white px-4 py-2 rounded-full font-semibold text-sm animate-pulse-soft">
+                        <i class="fas fa-star mr-2"></i> Gestão Estratégica Premium
+                    </span>
+                </div>
                 <h1 class="font-display text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                    Transformamos sua Presença Digital em
-                    <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Resultados Reais</span>
+                    Sua Presença Digital
+                    <span class="gradient-text typing-effect inline-block">Transformada em Resultados</span>
                 </h1>
                 <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
-                    Não vendemos bots ou automações. Oferecemos <strong>gestão estratégica completa</strong> com planejamento, execução e acompanhamento personalizado para crescimento orgânico sustentável.
+                    Não vendemos bots. Oferecemos <strong class="text-primary">gestão estratégica completa</strong> com planejamento, execução e acompanhamento personalizado.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#processo" class="btn-primary">
-                        <i class="fas fa-play-circle mr-2"></i> Ver Nosso Processo
-                    </a>
-                    <a href="#contato" class="btn-secondary">
-                        <i class="fas fa-calendar-check mr-2"></i> Agendar Reunião
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-cascade">
+                    <button onclick="openSchedulingModal()" class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl font-semibold hover-lift transition-all duration-300">
+                        <i class="fas fa-play-circle mr-2"></i> Agendar Reunião Estratégica
+                    </button>
+                    <a href="#servicos" class="bg-white text-gray-800 border-2 border-primary/30 px-8 py-4 rounded-xl font-semibold hover-lift transition-all duration-300">
+                        <i class="fas fa-chart-line mr-2"></i> Ver Soluções
                     </a>
                 </div>
             </div>
 
-            <!-- Estatísticas de Confiança -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
-                <div class="text-center">
-                    <div class="metric-value">500+</div>
+            <!-- Estatísticas com animação -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 animate-cascade">
+                <div class="text-center bg-white p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter1">0</div>
                     <p class="text-gray-600">Clientes Satisfeitos</p>
                 </div>
-                <div class="text-center">
-                    <div class="metric-value">98%</div>
+                <div class="text-center bg-white p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter2">0</div>
                     <p class="text-gray-600">Taxa de Retenção</p>
                 </div>
-                <div class="text-center">
-                    <div class="metric-value">4.9</div>
+                <div class="text-center bg-white p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter3">0</div>
                     <p class="text-gray-600">Avaliação Média</p>
                 </div>
-                <div class="text-center">
-                    <div class="metric-value">24/7</div>
+                <div class="text-center bg-white p-6 rounded-2xl shadow-lg hover-lift">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter4">0</div>
                     <p class="text-gray-600">Suporte Premium</p>
                 </div>
             </div>
@@ -437,180 +590,75 @@
     <!-- Seção do Processo -->
     <section id="processo" class="py-20 px-6 bg-white">
         <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold mb-4">Nosso Processo Estratégico</h2>
+            <div class="text-center mb-16 animate-cascade">
+                <h2 class="font-display text-4xl font-bold mb-4">Processo de Gestão Estratégica</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Um método comprovado em 4 etapas para garantir seu crescimento digital
+                    Metodologia comprovada em 4 etapas para crescimento sustentável
                 </p>
             </div>
 
-            <div class="process-timeline grid md:grid-cols-2 gap-8 relative">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
                 <!-- Etapa 1 -->
-                <div class="process-step animate-fade-up">
-                    <div class="step-number">1</div>
-                    <div class="text-primary mb-4">
-                        <i class="fas fa-comments text-3xl"></i>
+                <div class="floating-card bg-white p-8 rounded-2xl shadow-lg border border-primary/10 hover-lift">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-comments text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Reunião Estratégica</h3>
-                    <p class="text-gray-600 mb-4">
-                        Análise profunda do seu negócio, definição de objetivos e mapeamento do público-alvo.
+                    <h3 class="text-xl font-bold mb-4 text-center">Diagnóstico Estratégico</h3>
+                    <p class="text-gray-600 mb-4 text-center">
+                        Análise profunda do seu negócio e definição de objetivos SMART.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><i class="fas fa-check text-primary mr-2"></i> Diagnóstico completo</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Definição de metas SMART</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Mapa da jornada do cliente</li>
-                    </ul>
+                    <div class="text-center">
+                        <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
+                            Etapa 1
+                        </span>
+                    </div>
                 </div>
 
                 <!-- Etapa 2 -->
-                <div class="process-step animate-fade-up" style="animation-delay: 0.2s;">
-                    <div class="step-number">2</div>
-                    <div class="text-primary mb-4">
-                        <i class="fas fa-chart-line text-3xl"></i>
+                <div class="floating-card bg-white p-8 rounded-2xl shadow-lg border border-primary/10 hover-lift" style="animation-delay: 1s;">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Planejamento Personalizado</h3>
-                    <p class="text-gray-600 mb-4">
-                        Desenvolvimento de estratégias específicas para cada plataforma e criação de calendário de conteúdo.
+                    <h3 class="text-xl font-bold mb-4 text-center">Planejamento Personalizado</h3>
+                    <p class="text-gray-600 mb-4 text-center">
+                        Estratégias específicas para cada plataforma e criação de conteúdo.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><i class="fas fa-check text-primary mr-2"></i> Estratégia por plataforma</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Calendário de conteúdo</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Plano de investimento</li>
-                    </ul>
+                    <div class="text-center">
+                        <span class="inline-block px-3 py-1 bg-blue-500/10 text-blue-500 rounded-full text-sm">
+                            Etapa 2
+                        </span>
+                    </div>
                 </div>
 
                 <!-- Etapa 3 -->
-                <div class="process-step animate-fade-up" style="animation-delay: 0.4s;">
-                    <div class="step-number">3</div>
-                    <div class="text-primary mb-4">
-                        <i class="fas fa-rocket text-3xl"></i>
+                <div class="floating-card bg-white p-8 rounded-2xl shadow-lg border border-primary/10 hover-lift" style="animation-delay: 2s;">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Execução com Excelência</h3>
-                    <p class="text-gray-600 mb-4">
-                        Implementação das estratégias com acompanhamento diário e otimizações em tempo real.
+                    <h3 class="text-xl font-bold mb-4 text-center">Execução com Excelência</h3>
+                    <p class="text-gray-600 mb-4 text-center">
+                        Implementação diária com otimizações em tempo real.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><i class="fas fa-check text-primary mr-2"></i> Gestão diária</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Otimização contínua</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Comunicação constante</li>
-                    </ul>
+                    <div class="text-center">
+                        <span class="inline-block px-3 py-1 bg-green-500/10 text-green-500 rounded-full text-sm">
+                            Etapa 3
+                        </span>
+                    </div>
                 </div>
 
                 <!-- Etapa 4 -->
-                <div class="process-step animate-fade-up" style="animation-delay: 0.6s;">
-                    <div class="step-number">4</div>
-                    <div class="text-primary mb-4">
-                        <i class="fas fa-chart-bar text-3xl"></i>
+                <div class="floating-card bg-white p-8 rounded-2xl shadow-lg border border-primary/10 hover-lift" style="animation-delay: 3s;">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-bar text-2xl text-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Análise e Relatórios</h3>
-                    <p class="text-gray-600 mb-4">
-                        Monitoramento de métricas, relatórios detalhados e reuniões de acompanhamento mensal.
+                    <h3 class="text-xl font-bold mb-4 text-center">Análise de Resultados</h3>
+                    <p class="text-gray-600 mb-4 text-center">
+                        Relatórios detalhados e ajustes estratégicos mensais.
                     </p>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><i class="fas fa-check text-primary mr-2"></i> Relatórios semanais</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Reuniões mensais</li>
-                        <li><i class="fas fa-check text-primary mr-2"></i> Ajustes estratégicos</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard Preview -->
-    <section id="dashboard" class="py-20 px-6 bg-gradient-to-b from-white to-light">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
-                <h2 class="font-display text-4xl font-bold mb-4">Central de Gestão do Cliente</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Acompanhe em tempo real o crescimento e desempenho das suas campanhas
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Métrica 1 -->
-                <div class="dashboard-card">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-semibold text-gray-700">Seguidores</h3>
-                        <i class="fas fa-users text-primary"></i>
-                    </div>
-                    <div class="metric-value">+2,487</div>
-                    <p class="text-sm text-gray-500 mb-4">Este mês</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%"></div>
-                    </div>
-                </div>
-
-                <!-- Métrica 2 -->
-                <div class="dashboard-card">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-semibold text-gray-700">Engajamento</h3>
-                        <i class="fas fa-heart text-primary"></i>
-                    </div>
-                    <div class="metric-value">4.8%</div>
-                    <p class="text-sm text-gray-500 mb-4">Taxa média</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 76%"></div>
-                    </div>
-                </div>
-
-                <!-- Métrica 3 -->
-                <div class="dashboard-card">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-semibold text-gray-700">Conversões</h3>
-                        <i class="fas fa-shopping-cart text-primary"></i>
-                    </div>
-                    <div class="metric-value">42</div>
-                    <p class="text-sm text-gray-500 mb-4">Este mês</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 68%"></div>
-                    </div>
-                </div>
-
-                <!-- Métrica 4 -->
-                <div class="dashboard-card">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-semibold text-gray-700">ROI</h3>
-                        <i class="fas fa-chart-pie text-primary"></i>
-                    </div>
-                    <div class="metric-value">3.2x</div>
-                    <p class="text-sm text-gray-500 mb-4">Retorno sobre investimento</p>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 92%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Próximas Tarefas -->
-            <div class="mt-12 dashboard-card">
-                <h3 class="text-xl font-bold mb-6 flex items-center">
-                    <i class="fas fa-tasks text-primary mr-3"></i>
-                    Próximas Etapas do Seu Plano
-                </h3>
-                <div class="space-y-4">
-                    <div class="flex items-center justify-between p-4 bg-light rounded-lg">
-                        <div class="flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-video text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Reunião de Acompanhamento</h4>
-                                <p class="text-sm text-gray-500">15 de Novembro, 14:00</p>
-                            </div>
-                        </div>
-                        <span class="badge-premium">Agendada</span>
-                    </div>
-                    
-                    <div class="flex items-center justify-between p-4 bg-light rounded-lg">
-                        <div class="flex items-center">
-                            <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
-                                <i class="fas fa-chart-line text-primary"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold">Relatório Mensal</h4>
-                                <p class="text-sm text-gray-500">Disponível em 2 dias</p>
-                            </div>
-                        </div>
-                        <span class="badge-premium">Em Andamento</span>
+                    <div class="text-center">
+                        <span class="inline-block px-3 py-1 bg-orange-500/10 text-orange-500 rounded-full text-sm">
+                            Etapa 4
+                        </span>
                     </div>
                 </div>
             </div>
@@ -618,201 +666,55 @@
     </section>
 
     <!-- Seção de Serviços -->
-    <section id="servicos" class="py-20 px-6 bg-white">
+    <section id="servicos" class="py-20 px-6 bg-gradient-to-b from-white to-light">
         <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16 animate-cascade">
                 <h2 class="font-display text-4xl font-bold mb-4">Soluções de Gestão Completa</h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Pacotes estratégicos desenvolvidos para diferentes necessidades de crescimento
+                    Pacotes estratégicos para diferentes necessidades de crescimento digital
                 </p>
             </div>
 
-            <!-- Cards de Plataformas -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-                <div class="platform-card text-center">
-                    <i class="fab fa-instagram text-3xl text-pink-500 mb-3"></i>
-                    <h4 class="font-semibold">Instagram</h4>
+            <!-- Plataformas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 animate-cascade">
+                <div class="platform-card text-center bg-white p-6 rounded-2xl shadow-md hover-lift glow-effect">
+                    <i class="fab fa-instagram text-4xl text-pink-500 mb-3"></i>
+                    <h4 class="font-semibold text-lg">Instagram</h4>
+                    <p class="text-sm text-gray-500 mt-2">Gestão Completa</p>
                 </div>
-                <div class="platform-card text-center">
-                    <i class="fab fa-facebook text-3xl text-blue-600 mb-3"></i>
-                    <h4 class="font-semibold">Facebook</h4>
+                <div class="platform-card text-center bg-white p-6 rounded-2xl shadow-md hover-lift glow-effect">
+                    <i class="fab fa-facebook text-4xl text-blue-600 mb-3"></i>
+                    <h4 class="font-semibold text-lg">Facebook</h4>
+                    <p class="text-sm text-gray-500 mt-2">Gestão de Tráfego</p>
                 </div>
-                <div class="platform-card text-center">
-                    <i class="fab fa-tiktok text-3xl mb-3"></i>
-                    <h4 class="font-semibold">TikTok</h4>
+                <div class="platform-card text-center bg-white p-6 rounded-2xl shadow-md hover-lift glow-effect">
+                    <i class="fab fa-tiktok text-4xl mb-3"></i>
+                    <h4 class="font-semibold text-lg">TikTok</h4>
+                    <p class="text-sm text-gray-500 mt-2">Vídeos Virais</p>
                 </div>
-                <div class="platform-card text-center">
-                    <i class="fab fa-youtube text-3xl text-red-600 mb-3"></i>
-                    <h4 class="font-semibold">YouTube</h4>
+                <div class="platform-card text-center bg-white p-6 rounded-2xl shadow-md hover-lift glow-effect">
+                    <i class="fab fa-youtube text-4xl text-red-600 mb-3"></i>
+                    <h4 class="font-semibold text-lg">YouTube</h4>
+                    <p class="text-sm text-gray-500 mt-2">Gestão de Canal</p>
                 </div>
             </div>
 
-            <!-- Pacotes de Serviços -->
-            <div class="grid md:grid-cols-3 gap-8">
+            <!-- Pacotes -->
+            <div class="grid md:grid-cols-3 gap-8 animate-cascade">
                 <!-- Pacote Essencial -->
-                <div class="service-card p-8">
-                    <div class="badge-premium inline-block mb-4">Essencial</div>
-                    <h3 class="text-2xl font-bold mb-4">Gestão Básica</h3>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold">R$ 1.490</span>
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg hover-lift card-3d">
+                    <div class="text-center mb-6">
+                        <span class="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full font-semibold">
+                            Essencial
+                        </span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Gestão Básica</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-primary">R$ 1.490</span>
                         <span class="text-gray-500">/mês</span>
                     </div>
                     
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Gestão de 1 plataforma
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            15 posts/mês
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Relatório semanal
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            1 reunião mensal
-                        </li>
-                    </ul>
-                    
-                    <a href="https://wa.me/5551990132339?text=Olá%2C%20tenho%20interesse%20no%20Pacote%20Essencial%20de%20Gestão" 
-                       class="btn-secondary w-full text-center block">
-                        Solicitar Proposta
-                    </a>
-                </div>
-
-                <!-- Pacote Profissional -->
-                <div class="service-card p-8 relative border-2 border-primary">
-                    <div class="absolute top-4 right-4">
-                        <span class="badge-premium bg-accent text-white">Recomendado</span>
-                    </div>
-                    <div class="badge-premium inline-block mb-4">Profissional</div>
-                    <h3 class="text-2xl font-bold mb-4">Gestão Completa</h3>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold">R$ 2.990</span>
-                        <span class="text-gray-500">/mês</span>
-                    </div>
-                    
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Gestão de 3 plataformas
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            30 posts/mês
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Gestão de tráfego pago
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            2 reuniões mensais
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Relatório detalhado
-                        </li>
-                    </ul>
-                    
-                    <a href="https://wa.me/5551990132339?text=Olá%2C%20tenho%20interesse%20no%20Pacote%20Profissional%20de%20Gestão" 
-                       class="btn-primary w-full text-center block">
-                        Começar Agora
-                    </a>
-                </div>
-
-                <!-- Pacote Enterprise -->
-                <div class="service-card p-8">
-                    <div class="badge-premium inline-block mb-4">Enterprise</div>
-                    <h3 class="text-2xl font-bold mb-4">Gestão Corporativa</h3>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold">R$ 5.990</span>
-                        <span class="text-gray-500">/mês</span>
-                    </div>
-                    
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Gestão de 5+ plataformas
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Posts ilimitados
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Estratégia multicanál
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Suporte prioritário 24/7
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary mr-3"></i>
-                            Relatório executivo
-                        </li>
-                    </ul>
-                    
-                    <a href="https://wa.me/5551990132339?text=Olá%2C%20tenho%20interesse%20no%20Pacote%20Enterprise%20de%20Gestão" 
-                       class="btn-secondary w-full text-center block">
-                        Falar com Especialista
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Contato -->
-    <section id="contato" class="py-20 px-6 bg-accent text-white">
-        <div class="container mx-auto max-w-4xl">
-            <div class="text-center mb-12">
-                <h2 class="font-display text-4xl font-bold mb-4">Pronto para Transformar sua Presença Digital?</h2>
-                <p class="text-xl opacity-90">
-                    Agende uma reunião estratégica gratuita com nossa equipe
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- WhatsApp -->
-                <a href="https://wa.me/5551990132339" target="_blank" 
-                   class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-all group">
-                    <div class="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fab fa-whatsapp text-2xl text-green-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">WhatsApp</h3>
-                    <p class="opacity-80">Conversa rápida e direta</p>
-                </a>
-
-                <!-- E-mail -->
-                <a href="mailto:agenciagerais@outlook.com" 
-                   class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center hover:bg-white/20 transition-all group">
-                    <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-envelope text-2xl text-primary"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">E-mail</h3>
-                    <p class="opacity-80">Propostas detalhadas</p>
-                </a>
-
-                <!-- Calendly -->
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
-                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-calendar-alt text-2xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Agendamento</h3>
-                    <p class="opacity-80 mb-4">Escolha o melhor horário</p>
-                    <button onclick="alert('Sistema de agendamento em desenvolvimento')" 
-                            class="btn-primary w-full">
-                        Agendar Reunião
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+                    <!-- Footer -->
     <footer class="bg-dark text-white py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-8">
